@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>חוברת המתכונים שלי × יוצרי תוכן</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: hsl(36, 38%, 97%);
+    --warm: hsl(19, 86%, 92%);
+    --peach: hsl(19, 86%, 80%);
+    --green: hsl(144, 38%, 57%);
+    --green-dark: hsl(144, 38%, 38%);
+    --sage: hsl(152, 44%, 76%);
+    --gold: hsl(28, 89%, 66%);
+    --brown: hsl(28, 11%, 22%);
+    --brown-soft: hsl(28, 11%, 45%);
+    --radius: 1.2rem;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Rubik', sans-serif;
+    background: var(--cream);
+    color: var(--brown);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 90px 0; position: relative; }
+
+  /* scroll progress */
+  #progress {
+    position: fixed; top: 0; right: 0; height: 4px; width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--green));
+    z-index: 999; transition: width .1s linear;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 92vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 900px 600px at 80% -10%, hsl(19,86%,88%) 0%, transparent 60%),
+      radial-gradient(ellipse 700px 500px at 10% 110%, hsl(152,44%,88%) 0%, transparent 55%),
+      var(--cream);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 24px;
+  }
+  .float-emoji {
+    position: absolute;
+    font-size: 42px;
+    opacity: .16;
+    animation: floaty 9s ease-in-out infinite;
+    user-select: none;
+    pointer-events: none;
+    filter: saturate(.9);
+  }
+  @keyframes floaty {
+    0%,100% { transform: translateY(0) rotate(-6deg); }
+    50% { transform: translateY(-26px) rotate(8deg); }
+  }
+  .hero-inner { position: relative; z-index: 2; max-width: 780px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff;
+    color: var(--green-dark);
+    border: 1.5px solid var(--green);
+    padding: 8px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 14.5px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 18px hsla(144,38%,45%,.18);
+    animation: badgePop .7s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  .badge .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--green);
+    animation: blink 1.8s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100% {opacity:1; transform:scale(1);} 50% {opacity:.4; transform:scale(.7);} }
+  @keyframes badgePop { from { opacity: 0; transform: translateY(-18px) scale(.9); } }
+  .hero h1 {
+    font-size: clamp(38px, 6.5vw, 68px);
+    font-weight: 900;
+    line-height: 1.18;
+    margin-bottom: 22px;
+    letter-spacing: -1px;
+    animation: riseIn .8s .15s cubic-bezier(.22,1,.36,1) both;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(120deg, var(--green-dark), var(--green) 50%, var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  @keyframes riseIn { from { opacity: 0; transform: translateY(34px); } }
+  .hero p.sub {
+    font-size: clamp(17px, 2.2vw, 20px);
+    color: var(--brown-soft);
+    max-width: 640px;
+    margin: 0 auto 38px;
+    animation: riseIn .8s .3s cubic-bezier(.22,1,.36,1) both;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--green);
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 17px 44px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px hsla(144,38%,40%,.4);
+    transition: transform .2s ease, box-shadow .2s ease;
+    position: relative;
+    animation: riseIn .8s .45s cubic-bezier(.22,1,.36,1) both;
+  }
+  .cta-btn::after {
+    content: "";
+    position: absolute; inset: -4px;
+    border-radius: 999px;
+    border: 2px solid var(--green);
+    opacity: 0;
+    animation: ripple 2.4s ease-out infinite;
+  }
+  @keyframes ripple { 0% { opacity: .5; transform: scale(1);} 70% { opacity: 0; transform: scale(1.18);} 100% { opacity: 0; } }
+  .cta-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 40px hsla(144,38%,40%,.5); }
+  .scroll-hint {
+    position: absolute; bottom: 26px; right: 50%; transform: translateX(50%);
+    color: var(--brown-soft); font-size: 26px;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translate(50%,0);} 50%{transform:translate(50%,10px);} }
+
+  /* ===== MARQUEE ===== */
+  .marquee {
+    background: var(--brown);
+    color: hsl(35,30%,88%);
+    overflow: hidden;
+    padding: 16px 0;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-block;
+    animation: scrollX 30s linear infinite;
+    font-size: 17px; font-weight: 500;
+  }
+  .marquee-track span { margin: 0 26px; }
+  @keyframes scrollX { from { transform: translateX(0); } to { transform: translateX(50%); } }
+
+  /* ===== SECTION HEADERS ===== */
+  h2.sec-title {
+    font-size: clamp(28px, 4.4vw, 42px);
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: -.5px;
+  }
+  p.sec-sub { text-align: center; color: var(--brown-soft); font-size: 18px; max-width: 640px; margin: 0 auto 56px; }
+  .accent-line { width: 64px; height: 6px; background: linear-gradient(90deg, var(--peach), var(--gold)); border-radius: 3px; margin: 16px auto 18px; }
+
+  /* ===== ABOUT ===== */
+  .about { background: #fff; }
+  .about-box { max-width: 800px; margin: 0 auto; text-align: center; }
+  .about-box p { font-size: clamp(16.5px, 2vw, 19px); color: var(--brown-soft); margin-bottom: 18px; }
+  .about-box p strong { color: var(--brown); font-weight: 700; background: linear-gradient(transparent 62%, var(--warm) 62%); padding: 0 3px; }
+
+  /* ===== STATS ===== */
+  .stats-strip { background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); padding: 70px 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; }
+  .stat {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 30px 16px;
+    text-align: center;
+    border: 1px solid hsl(36,30%,90%);
+    box-shadow: 0 6px 20px hsla(28,11%,25%,.05);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .stat:hover { transform: translateY(-6px); box-shadow: 0 16px 34px hsla(28,11%,25%,.1); }
+  .stat .num {
+    font-size: clamp(28px, 3.2vw, 38px);
+    white-space: nowrap;
+    font-weight: 900;
+    background: linear-gradient(160deg, var(--green-dark), var(--green));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .stat .lbl { font-size: 14px; color: var(--brown-soft); font-weight: 500; margin-top: 4px; }
+
+  /* ===== FEATURES ===== */
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
+  .feat {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 30px 28px;
+    border: 1px solid hsl(36,30%,90%);
+    transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, border-color .3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .feat::before {
+    content: "";
+    position: absolute; top: 0; right: 0; left: 0; height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--sage));
+    transform: scaleX(0); transform-origin: right;
+    transition: transform .35s ease;
+  }
+  .feat:hover { transform: translateY(-8px); box-shadow: 0 22px 44px hsla(28,11%,25%,.12); border-color: transparent; }
+  .feat:hover::before { transform: scaleX(1); }
+  .feat .ico {
+    width: 58px; height: 58px;
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    margin-bottom: 18px;
+    transition: transform .3s ease;
+  }
+  .feat:hover .ico { transform: scale(1.12) rotate(-6deg); }
+  .feat h3 { font-size: 19.5px; font-weight: 700; margin-bottom: 8px; }
+  .feat p { font-size: 15px; color: var(--brown-soft); }
+
+  /* ===== ADDY CHAT ===== */
+  .addy { background: #fff; }
+  .title-face {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    vertical-align: -16px;
+    margin-right: 8px;
+    border: 3px solid #fff;
+    box-shadow: 0 6px 16px hsla(28,11%,25%,.22);
+  }
+  .eddy-pic { flex: 0 0 270px; text-align: center; }
+  .eddy-pic img {
+    width: 100%;
+    border-radius: 28px;
+    box-shadow: 0 26px 54px hsla(28,11%,20%,.24);
+    transform: rotate(-2.5deg);
+    transition: transform .35s cubic-bezier(.22,1,.36,1);
+    display: block;
+  }
+  .eddy-pic:hover img { transform: rotate(0deg) scale(1.03); }
+  .eddy-pic-cap { margin-top: 16px; font-size: 14.5px; color: var(--brown-soft); font-weight: 600; }
+  .meet-link { text-align: center; margin-top: 50px; }
+  .btn-outline {
+    display: inline-block;
+    border: 2px solid var(--green);
+    color: var(--green-dark);
+    font-weight: 700;
+    font-size: 16.5px;
+    padding: 13px 34px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-outline:hover {
+    background: var(--green);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px hsla(144,38%,40%,.35);
+  }
+  .chat-head .av { overflow: hidden; }
+  .chat-head .av img { width: 100%; height: 100%; object-fit: cover; }
+  .addy-flex { display: flex; gap: 56px; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .chat-window {
+    flex: 0 1 420px;
+    background: var(--cream);
+    border: 1px solid hsl(36,30%,88%);
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: 0 18px 44px hsla(28,11%,25%,.1);
+  }
+  .chat-head {
+    display: flex; align-items: center; gap: 10px;
+    padding-bottom: 14px; margin-bottom: 14px;
+    border-bottom: 1px solid hsl(36,30%,88%);
+  }
+  .chat-head .av {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--sage);
+    display: flex; align-items: center; justify-content: center; font-size: 21px;
+  }
+  .chat-head .nm { font-weight: 700; font-size: 15.5px; }
+  .chat-head .st { font-size: 12px; color: var(--green-dark); display: flex; align-items: center; gap: 5px; }
+  .chat-head .st::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+  .chat-body { display: flex; flex-direction: column; gap: 10px; min-height: 280px; }
+  .bubble {
+    max-width: 86%;
+    padding: 12px 17px;
+    border-radius: 18px;
+    font-size: 14.5px;
+    opacity: 0;
+    transform: translateY(14px) scale(.96);
+    transition: opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+    box-shadow: 0 2px 8px hsla(28,11%,25%,.07);
+  }
+  .bubble.shown { opacity: 1; transform: none; }
+  .bubble.user { background: var(--green); color: #fff; align-self: flex-start; border-bottom-right-radius: 5px; }
+  .bubble.addy { background: #fff; border: 1px solid hsl(36,30%,90%); align-self: flex-end; border-bottom-left-radius: 5px; }
+  .typing { display: inline-flex; gap: 4px; align-items: center; height: 14px; }
+  .typing i { width: 7px; height: 7px; border-radius: 50%; background: hsl(28,11%,65%); animation: tp 1s infinite; font-style: normal; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes tp { 0%,100% { transform: translateY(0); opacity:.5; } 50% { transform: translateY(-5px); opacity:1; } }
+  .addy-list { flex: 1 1 380px; max-width: 460px; }
+  .addy-list ul { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+  .addy-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    font-size: 16.5px; font-weight: 500;
+    background: var(--cream);
+    border: 1px solid hsl(36,30%,90%);
+    padding: 14px 18px;
+    border-radius: 14px;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .addy-list li:hover { transform: translateX(-6px); border-color: var(--sage); }
+  .addy-list li .check {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; color: var(--brown);
+    margin-top: 1px;
+  }
+
+  /* ===== OFFER ===== */
+  .offer {
+    background:
+      radial-gradient(ellipse 800px 500px at 15% 0%, hsl(19,86%,90%) 0%, transparent 55%),
+      radial-gradient(ellipse 700px 480px at 90% 100%, hsl(152,44%,88%) 0%, transparent 55%),
+      var(--cream);
+    overflow: hidden;
+  }
+  .offer-flex { display: flex; gap: 54px; align-items: center; flex-wrap: wrap; justify-content: center; }
+  .offer-cards { flex: 1 1 400px; max-width: 480px; display: flex; flex-direction: column; gap: 20px; }
+  .offer-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 26px 28px;
+    border-right: 6px solid var(--green);
+    box-shadow: 0 10px 28px hsla(28,11%,25%,.08);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .offer-card:hover { transform: translateX(-8px); box-shadow: 0 18px 40px hsla(28,11%,25%,.13); }
+  .offer-card:nth-child(2) { border-right-color: var(--gold); }
+  .offer-card:nth-child(3) { border-right-color: var(--peach); }
+  .offer-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .offer-card p { font-size: 15.2px; color: var(--brown-soft); }
+
+  /* phone */
+  .phone-zone { flex: 0 0 320px; perspective: 1100px; }
+  .phone {
+    background: var(--brown);
+    border-radius: 44px;
+    padding: 13px;
+    box-shadow: 0 40px 80px hsla(28,11%,20%,.32);
+    transition: transform .25s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .phone .notch {
+    width: 110px; height: 22px;
+    background: var(--brown);
+    border-radius: 0 0 14px 14px;
+    position: absolute; top: 13px; right: 50%; transform: translateX(50%);
+    z-index: 3;
+  }
+  .screen { background: var(--cream); border-radius: 33px; overflow: hidden; height: 640px; position: relative; }
+  .screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .phone-caption { text-align: center; font-size: 14px; color: var(--brown-soft); margin-top: 18px; font-weight: 600; }
+
+  /* creator tile demo */
+  .tile-demo { flex: 0 1 360px; display: flex; flex-direction: column; gap: 18px; }
+  .tile-demo-label { font-size: 17.5px; font-weight: 800; text-align: center; }
+  .creator-tile {
+    background: linear-gradient(135deg, hsl(28,89%,91%) 0%, hsl(19,86%,88%) 100%);
+    border-radius: 22px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 14px 36px hsla(28,89%,50%,.18);
+  }
+  .creator-tile::before {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: 22px;
+    padding: 2.5px;
+    background: linear-gradient(120deg, var(--gold), hsl(19,86%,70%), var(--gold));
+    background-size: 250% 250%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderFlow 4s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes borderFlow { 0% { background-position: 0% 50%; } 100% { background-position: 250% 50%; } }
+  .crown {
+    position: absolute;
+    top: -14px; left: 18px;
+    background: linear-gradient(120deg, var(--gold), hsl(28,89%,58%));
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 5px 16px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px hsla(28,89%,50%,.4);
+    z-index: 2;
+  }
+  .creator-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .creator-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--peach);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    border: 3px solid #fff;
+    box-shadow: 0 3px 9px hsla(28,11%,25%,.18);
+  }
+  .creator-name { font-weight: 800; font-size: 17px; }
+  .creator-sub { font-size: 12.5px; color: var(--brown-soft); }
+  .mini-recipes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .mini-recipe {
+    background: #fff;
+    border-radius: 14px;
+    padding: 11px 7px;
+    text-align: center;
+    font-size: 11.5px;
+    font-weight: 600;
+    box-shadow: 0 3px 8px hsla(28,11%,25%,.08);
+    transition: transform .2s ease;
+  }
+  .mini-recipe:hover { transform: translateY(-4px) scale(1.04); }
+  .mini-recipe .emoji { font-size: 26px; display: block; margin-bottom: 4px; }
+  .tile-cta {
+    margin-top: 13px;
+    background: var(--green);
+    color: #fff;
+    text-align: center;
+    font-size: 13.5px;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 9px;
+  }
+  .try-name {
+    background: #fff;
+    border: 2px dashed var(--green);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    text-align: center;
+  }
+  .try-name label { font-size: 15px; font-weight: 700; display: block; margin-bottom: 10px; }
+  .try-name input {
+    font-family: inherit;
+    font-size: 16.5px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    border: 2px solid hsl(36,30%,85%);
+    text-align: center;
+    width: 250px;
+    max-width: 100%;
+    outline: none;
+    color: var(--brown);
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .try-name input:focus { border-color: var(--green); box-shadow: 0 0 0 4px hsla(144,38%,57%,.18); }
+
+  /* ===== STEPS ===== */
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; position: relative; }
+  .step {
+    text-align: center;
+    padding: 36px 24px;
+    background: #fff;
+    border-radius: var(--radius);
+    border: 1px solid hsl(36,30%,90%);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .step:hover { transform: translateY(-7px); box-shadow: 0 18px 38px hsla(28,11%,25%,.1); }
+  .step .n {
+    width: 56px; height: 56px;
+    margin: 0 auto 18px;
+    background: linear-gradient(140deg, var(--peach), var(--gold));
+    color: #fff;
+    font-weight: 900;
+    font-size: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 20px hsla(28,89%,55%,.35);
+  }
+  .step h3 { font-size: 19px; font-weight: 800; margin-bottom: 8px; }
+  .step p { font-size: 15px; color: var(--brown-soft); }
+
+  /* ===== FAQ ===== */
+  .faq { background: #fff; }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .faq-item {
+    background: var(--cream);
+    border: 1px solid hsl(36,30%,88%);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color .25s ease, box-shadow .25s ease;
+  }
+  .faq-item.open { border-color: var(--green); box-shadow: 0 8px 24px hsla(144,38%,45%,.12); }
+  .faq-q {
+    width: 100%;
+    background: none; border: none;
+    font-family: inherit;
+    font-size: 17px; font-weight: 700;
+    color: var(--brown);
+    padding: 19px 22px;
+    text-align: right;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  }
+  .faq-q .pm {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 600;
+    transition: transform .3s ease;
+  }
+  .faq-item.open .pm { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+  }
+  .faq-a p { padding: 0 22px 20px; font-size: 15.5px; color: var(--brown-soft); }
+
+  /* ===== FINAL ===== */
+  .final {
+    background: var(--brown);
+    color: #fff;
+    text-align: center;
+    padding: 100px 24px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+  .final .blob {
+    position: absolute;
+    width: 480px; height: 480px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .17;
+    animation: blobMove 14s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .final .blob.b1 { background: var(--gold); top: -180px; right: -120px; }
+  .final .blob.b2 { background: var(--green); bottom: -200px; left: -140px; animation-delay: 3s; }
+  @keyframes blobMove { from { transform: translate(0,0) scale(1); } to { transform: translate(60px, 40px) scale(1.15); } }
+  .final h2 { font-size: clamp(30px, 4.6vw, 46px); font-weight: 900; margin-bottom: 16px; position: relative; }
+  .final p { color: hsl(35,30%,80%); font-size: 18px; max-width: 560px; margin: 0 auto 38px; position: relative; }
+  .final .cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .final .cta-btn { animation: none; }
+  .final .cta-btn::after { display: none; }
+  .cta-btn.alt { background: var(--gold); box-shadow: 0 10px 30px hsla(28,89%,50%,.4); }
+  .cta-btn.alt:hover { box-shadow: 0 16px 40px hsla(28,89%,50%,.5); }
+  .footer-note { margin-top: 48px; font-size: 13.5px; color: hsl(35,15%,62%); line-height: 1.9; position: relative; }
+
+  /* ===== REVEAL ===== */
+  .reveal { opacity: 0; transform: translateY(34px); transition: opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1); }
+  .reveal.on { opacity: 1; transform: none; }
+
+  @media (max-width: 680px) {
+    section { padding: 56px 0; }
+    .hero { min-height: 84vh; }
+    .phone-zone { flex: 0 0 280px; }
+    .screen { height: 570px; }
+    .float-emoji { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<header class="hero">
+  <span class="float-emoji" style="top:12%; right:8%; animation-delay:0s">🍅</span>
+  <span class="float-emoji" style="top:22%; left:10%; animation-delay:1.2s">🥑</span>
+  <span class="float-emoji" style="top:64%; right:12%; animation-delay:2.1s">🍋</span>
+  <span class="float-emoji" style="top:74%; left:14%; animation-delay:.6s">🧄</span>
+  <span class="float-emoji" style="top:40%; right:20%; animation-delay:3s; font-size:34px">🌿</span>
+  <span class="float-emoji" style="top:18%; left:30%; animation-delay:1.8s; font-size:34px">🍓</span>
+  <span class="float-emoji" style="top:80%; right:34%; animation-delay:2.6s; font-size:36px">🥕</span>
+  <div class="hero-inner">
+    <div class="badge"><span class="dot"></span>הצעת שיתוף פעולה ליוצרי תוכן</div>
+    <h1>המתכונים שלך,<br>בתוך <span class="grad">המטבח</span> של הקהל שלך</h1>
+    <p class="sub">חוברת המתכונים שלי היא אפליקציה ישראלית עם עוזר AI בשם אדי, שהופכת כל מתכון מהפיד לארוחה אמיתית. אנחנו מזמינים אותך לקחת בה מקום של כבוד.</p>
+    <a class="cta-btn" href="#offer">מה יוצא לי מזה? ⬇</a>
+  </div>
+  <div class="scroll-hint">⌄</div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track" id="marquee">
+    <span>🍝 פסטה כמו באיטליה</span><span>🥘 חמין של שבת</span><span>🍰 עוגת שוקולד מושלמת</span><span>🥗 סלטים מרעננים</span><span>🍲 מרק עוף של אמא</span><span>🫓 פוקצ'ה ביתית</span><span>🍪 עוגיות בלי קמח</span><span>🥙 שווארמה ביתית</span>
+  </div>
+</div>
+
+<section class="about">
+  <div class="wrap about-box">
+    <h2 class="sec-title reveal">רגע, מה זו בעצם "חוברת המתכונים שלי"?</h2>
+    <div class="accent-line"></div>
+    <p class="reveal">כולנו מכירים את זה: המתכונים הכי טובים מפוזרים בין צילומי מסך, קבוצות וואטסאפ, סרטונים שנעלמים בפיד ופתקים מקומטים במטבח. וכשרוצים לבשל, שום דבר לא נמצא.</p>
+    <p class="reveal"><strong>חוברת המתכונים שלי</strong> פותרת את זה: מדביקים לינק מכל מקום (פייסבוק, אינסטגרם, אתרי בישול) או מצלמים תמונה, והמתכון נשמר אוטומטית, נקי ומסודר, עם מצרכים והוראות. משם הכל קורה במקום אחד: <strong>אדי</strong>, השף הדיגיטלי החכם, מציע מה לבשל לפי מה שיש בבית, רשימת הקניות נבנית לבד, מצב הבישול מלווה שלב אחר שלב, והמשפחה מתחברת בקבוצות משותפות.</p>
+    <p class="reveal">אפליקציה ישראלית, בעברית, פשוטה לתפעול. והקהל שלה כבר כאן:</p>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="wrap stats-grid">
+    <div class="stat reveal"><div class="num" data-count="3636">0</div><div class="lbl">מתכונים שמורים</div></div>
+    <div class="stat reveal"><div class="num" data-count="1149">0</div><div class="lbl">משתמשים רשומים · 103+ השבוע</div></div>
+    <div class="stat reveal"><div class="num" data-count="37">0</div><div class="lbl">קבוצות בישול פעילות</div></div>
+    <div class="stat reveal"><div class="num" data-count="360">0</div><div class="lbl">מתכונים נוספו השבוע</div></div>
+    <div class="stat reveal"><div class="num" data-count="22200" data-plus="+">0</div><div class="lbl">מבקרים מאז ההשקה</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec-title reveal">מה האפליקציה יודעת לעשות</h2>
+    <div class="accent-line"></div>
+    <p class="sec-sub reveal">המשתמשים שלנו לא רק שומרים מתכונים. הם מבשלים אותם.</p>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="ico" style="background: var(--warm)">📲</div>
+        <h3>ייבוא חכם מכל מקום</h3>
+        <p>מדביקים לינק מפייסבוק, אינסטגרם או כל אתר בישול, והמתכון נשמר מסודר עם מצרכים והוראות. 96% הצלחה, כולל פוסטים עם המתכון בתגובות.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ico" style="background: var(--sage)">🍳</div>
+        <h3>מצב בישול</h3>
+        <p>שלב אחר שלב על מסך שלא נכבה, עם טיימרים מובנים, מצרכים צמודים, ואפילו ניווט קולי בזמן שהידיים בקמח.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ico" style="background: hsl(28,89%,88%)">🛒</div>
+        <h3>רשימת קניות אוטומטית</h3>
+        <p>לחיצה אחת הופכת מתכון לרשימת קניות משותפת עם המשפחה. אדי מוסיף מצרכים גם מהוואטסאפ.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ico" style="background: var(--warm)">👥</div>
+        <h3>קבוצות וקהילות</h3>
+        <p>קבוצות בישול משפחתיות וקהילתיות עם מתכון השבוע, לייקים והתראות. 37 קבוצות כבר פעילות.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ico" style="background: var(--sage)">💬</div>
+        <h3>אדי בוואטסאפ ובטלגרם</h3>
+        <p>המשתמשים מדברים עם אדי איפה שהם כבר נמצאים: שולחים לינק, מבקשים מתכון, מוסיפים לרשימת קניות. הכל מהצ'אט.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="ico" style="background: hsl(28,89%,88%)">📖</div>
+        <h3>חוברת דיגיטלית אישית</h3>
+        <p>כל המתכונים מאורגנים בקטגוריות, עם חיפוש, תמונות וסימון מועדפים. ספר הבישול שתמיד איתך.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="addy">
+  <div class="wrap">
+    <h2 class="sec-title reveal">תכירו את אדי <img class="title-face" src="eddy-face.jpg" alt="אדי"></h2>
+    <div class="accent-line"></div>
+    <p class="sec-sub reveal">עוזר ה-AI שמכיר כל מתכון באפליקציה, וגם את מה שיש למשתמש במקרר.</p>
+    <div class="addy-flex">
+      <div class="eddy-pic reveal">
+        <img src="eddy-fridge.jpg" alt="אדי מציץ מהמקרר">
+        <div class="eddy-pic-cap">"בוא נראה מה יש לנו במקרר..."</div>
+      </div>
+      <div class="chat-window reveal" id="chatWindow">
+        <div class="chat-head">
+          <div class="av"><img src="eddy-face.jpg" alt="אדי"></div>
+          <div>
+            <div class="nm">אדי, השף הדיגיטלי</div>
+            <div class="st">מחובר</div>
+          </div>
+        </div>
+        <div class="chat-body" id="chatBody">
+          <div class="bubble user">אדי, יש לי עוף, בטטה ושמנת. מה אפשר להכין?</div>
+          <div class="bubble addy">מצאתי 3 מתכונים מהחוברת שלך שמתאימים בדיוק! 🎯 הכי קרוב: פילה עוף בשמנת ובטטה צלויה. רוצה שאפתח לך מצב בישול?</div>
+          <div class="bubble user">כן! ותוסיף שמנת לרשימת הקניות</div>
+          <div class="bubble addy">נוסף ✅ ורשימת הקניות שותפה עם המשפחה. בתיאבון!</div>
+        </div>
+      </div>
+      <div class="addy-list reveal">
+        <ul>
+          <li><span class="check">✓</span>מציע מתכונים לפי מה שיש במקרר</li>
+          <li><span class="check">✓</span>מתכנן תפריט שבועי שלם עם רשימת קניות</li>
+          <li><span class="check">✓</span>מחלץ מתכונים מכל לינק או תמונה</li>
+          <li><span class="check">✓</span>מלווה בבישול עם קול, צעד אחר צעד</li>
+          <li><span class="check">✓</span>שולח תזכורות והשראה שבועית</li>
+          <li><span class="check">✓</span>זמין באפליקציה, בוואטסאפ ובטלגרם</li>
+        </ul>
+      </div>
+    </div>
+    <div class="meet-link reveal">
+      <a class="btn-outline" href="https://alonr29.github.io/meet-eddy/" target="_blank">רוצים להכיר את אדי מקרוב? לדף ההיכרות המלא ←</a>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="offer">
+  <div class="wrap">
+    <h2 class="sec-title reveal">מה אנחנו מציעים לך</h2>
+    <div class="accent-line"></div>
+    <p class="sec-sub reveal">לא עוד שיתוף פעולה של פוסט וזהו. בית אמיתי לתוכן שלך, בתוך האפליקציה.</p>
+    <div class="offer-flex">
+      <div class="offer-cards">
+        <div class="offer-card reveal">
+          <h3>⭐ אריח ייחודי משלך</h3>
+          <p>אריח ממותג בעמוד הבית של האפליקציה, רק שלך. שם, תמונה, והמתכונים שלך מוצגים לכל המשתמשים. כשמשתמש שומר מתכון שלך, הקרדיט והלינק לערוצים שלך תמיד שם.</p>
+        </div>
+        <div class="offer-card reveal">
+          <h3>📣 חשיפה לקהל שמבשל באמת</h3>
+          <p>הקהל שלנו לא גולל ושוכח. הוא שומר, מבשל וחוזר: כמעט שליש מהמשתמשים הפעילים נכנסים כל יום. המתכונים שלך מקבלים חיים שניים: במצב בישול, ברשימות קניות, ובהמלצות של אדי.</p>
+        </div>
+        <div class="offer-card reveal">
+          <h3>👑 קהילה משלך בתוך האפליקציה</h3>
+          <p>קבוצה ייעודית בניהולך עם העוקבים שלך: מתכון השבוע שלך, לייקים, תגובות והתראות. ערוץ ישיר לקהל, בלי אלגוריתם באמצע.</p>
+        </div>
+      </div>
+      <div class="phone-zone reveal">
+        <div class="phone" id="phone">
+          <div class="screen">
+            <img src="home-screen.jpg" alt="מסך הבית של האפליקציה">
+          </div>
+        </div>
+        <div class="phone-caption">מסך הבית האמיתי של האפליקציה</div>
+      </div>
+      <div class="tile-demo reveal">
+        <div class="tile-demo-label">⭐ וככה ייראה האריח שלך בעמוד הבית:</div>
+        <div class="creator-tile">
+          <div class="crown">יוצר תוכן ⭐</div>
+          <div class="creator-head">
+            <div class="creator-avatar">👩‍🍳</div>
+            <div>
+              <div class="creator-name" id="tileName">השף שלך</div>
+              <div class="creator-sub">המתכונים החדשים שלי השבוע</div>
+            </div>
+          </div>
+          <div class="mini-recipes">
+            <div class="mini-recipe"><span class="emoji">🍝</span>פסטה ברוטב</div>
+            <div class="mini-recipe"><span class="emoji">🥗</span>סלט חגיגי</div>
+            <div class="mini-recipe"><span class="emoji">🍰</span>עוגת שוקולד</div>
+          </div>
+          <div class="tile-cta">לכל המתכונים שלי ←</div>
+        </div>
+        <div class="try-name">
+          <label>✨ נסו בעצמכם: איך האריח שלך ייראה?</label>
+          <input type="text" id="nameInput" placeholder="הקלידו את השם שלכם..." maxlength="30">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec-title reveal">איך זה עובד</h2>
+    <div class="accent-line"></div>
+    <p class="sec-sub reveal">פשוט. בלי התחייבויות מסובכות.</p>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="n">1</div>
+        <h3>שיחת היכרות</h3>
+        <p>מספרים לנו על התוכן שלך, ובונים יחד את האריח והקהילה שמתאימים לך.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">2</div>
+        <h3>מעלים את התוכן</h3>
+        <p>המתכונים שלך נכנסים לאפליקציה עם קרדיט מלא ולינקים לכל הערוצים שלך.</p>
+      </div>
+      <div class="step reveal">
+        <div class="n">3</div>
+        <h3>הקהל מבשל</h3>
+        <p>המשתמשים מגלים, שומרים ומבשלים. את/ה מקבל/ת חשיפה, קהילה וערוץ קשר ישיר.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h2 class="sec-title reveal">שאלות שבטח עולות לך</h2>
+    <div class="accent-line"></div>
+    <p class="sec-sub reveal">בקצרה ובכנות.</p>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">כמה עבודה זה דורש ממני?<span class="pm">+</span></button>
+        <div class="faq-a"><p>כמעט כלום. אנחנו מעלים את המתכונים בשבילך מהתוכן הקיים שלך. את/ה רק מאשר/ת ומספר/ת לעוקבים.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">של מי התוכן?<span class="pm">+</span></button>
+        <div class="faq-a"><p>שלך, תמיד. כל מתכון מופיע עם השם שלך, התמונה שלך ולינק לערוצים שלך. אנחנו במה, לא בעלים.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">כמה זה עולה?<span class="pm">+</span></button>
+        <div class="faq-a"><p>כלום. זה שיתוף פעולה: את/ה מביא/ה תוכן מעולה, אנחנו מביאים במה וקהל שמבשל.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">ואם ארצה להפסיק?<span class="pm">+</span></button>
+        <div class="faq-a"><p>בכל רגע, בלי קנסות ובלי שאלות. התוכן שלך יורד מהאפליקציה באותו יום.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="final">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <h2>בואו נבשל את זה ביחד 🍲</h2>
+  <p>אנחנו מחפשים יוצרי תוכן קולינריים שרוצים בית אמיתי לתוכן שלהם. מקומות ראשונים, תנאים של שותפים מקימים.</p>
+  <div class="cta-row">
+    <a class="cta-btn" href="https://wa.me/972528654482?text=היי, ראיתי את ההצעה ליוצרי תוכן ואשמח לשמוע עוד" target="_blank">💬 דברו איתנו בוואטסאפ</a>
+    <a class="cta-btn alt" href="mailto:alonr39@gmail.com?subject=שיתוף פעולה - חוברת המתכונים שלי">✉️ שלחו מייל</a>
+  </div>
+  <div class="footer-note">מאחורי האפליקציה: רון אלון, יזם ישראלי שפיתח את חוברת המתכונים שלי מתוך אהבה לבישול ביתי<br>חוברת המתכונים שלי · myrecipebook.co.il · אפליקציה ישראלית, בעברית, עם המון אהבה לאוכל</div>
+</footer>
+
+<script>
+  const progress = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+  }, { passive: true });
+
+  const mq = document.getElementById('marquee');
+  mq.innerHTML += mq.innerHTML;
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const siblings = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
+        const idx = siblings.indexOf(el);
+        setTimeout(() => el.classList.add('on'), Math.max(0, idx) * 90);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  function animateCount(el) {
+    const target = +el.dataset.count;
+    const plus = el.dataset.plus || '';
+    const dur = 1600;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString('he-IL') + (p === 1 ? plus : '');
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const statObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); statObs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => statObs.observe(el));
+
+  const chatBody = document.getElementById('chatBody');
+  const bubbles = [...chatBody.querySelectorAll('.bubble')];
+  let chatPlayed = false;
+  function playChat() {
+    if (chatPlayed) return;
+    chatPlayed = true;
+    let delay = 300;
+    bubbles.forEach((b) => {
+      const isAddy = b.classList.contains('addy');
+      if (isAddy) {
+        const t = document.createElement('div');
+        t.className = 'bubble addy shown';
+        t.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
+        setTimeout(() => { chatBody.insertBefore(t, b); }, delay);
+        delay += 900;
+        setTimeout(() => { t.remove(); b.classList.add('shown'); }, delay);
+      } else {
+        setTimeout(() => b.classList.add('shown'), delay);
+      }
+      delay += 1100;
+    });
+  }
+  const chatObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { playChat(); chatObs.unobserve(e.target); } });
+  }, { threshold: 0.4 });
+  chatObs.observe(document.getElementById('chatWindow'));
+
+  const phone = document.getElementById('phone');
+  const zone = phone.parentElement;
+  zone.addEventListener('mousemove', e => {
+    const r = zone.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5;
+    const y = (e.clientY - r.top) / r.height - .5;
+    phone.style.transform = `rotateY(${x * -14}deg) rotateX(${y * 10}deg)`;
+  });
+  zone.addEventListener('mouseleave', () => { phone.style.transform = 'rotateY(0) rotateX(0)'; });
+
+  const nameInput = document.getElementById('nameInput');
+  const tileName = document.getElementById('tileName');
+  nameInput.addEventListener('input', () => {
+    tileName.textContent = nameInput.value.trim() ? 'המטבח של ' + nameInput.value.trim() : 'השף שלך';
+  });
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = '0';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+</body>
+</html>
