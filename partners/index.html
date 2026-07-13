@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>חוברת המתכונים שלי · הזמנה לשיתוף פעולה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F4EC;
+    --cream-deep:#F1E7D6;
+    --paper:#FFFDF8;
+    --espresso:#2C2620;
+    --ink:#413B34;
+    --muted:#8A7F71;
+    --line:#E4D9C4;
+    --sage:#5FA982;
+    --peach:#F4B79B;
+    --gold:#C4972F;
+    --gold-soft:#E7C878;
+    --radius:20px;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box}
+  html{direction:rtl}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Heebo','Rubik',sans-serif;
+    font-weight:400;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .num{font-family:'Playfair Display',serif;font-variant-numeric:lining-nums;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+
+  /* eyebrow label */
+  .eyebrow{
+    font-family:'Rubik',sans-serif;
+    font-weight:500;
+    font-size:.72rem;
+    letter-spacing:.28em;
+    color:var(--gold);
+    text-transform:none;
+    display:flex;align-items:center;gap:14px;
+    margin:0 0 22px;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold-soft),transparent);}
+  .eyebrow.center{justify-content:center}
+  .eyebrow.center::after,.eyebrow.center::before{content:"";width:46px;flex:none;height:1px;background:var(--gold-soft);}
+
+  h1,h2,h3{font-weight:300;line-height:1.15;color:var(--espresso);margin:0;text-wrap:balance;}
+  .section h2{font-size:2rem;font-weight:300;letter-spacing:-.01em;margin-bottom:18px;}
+  p{margin:0 0 18px;max-width:60ch;}
+  .lead{font-size:1.15rem;color:var(--ink);}
+
+  /* ---------- COVER ---------- */
+  .cover{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;
+    background:
+      radial-gradient(120% 80% at 50% 0%, #FCF9F1 0%, var(--cream) 55%, var(--cream-deep) 100%);
+    padding:80px 32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover::before{
+    content:"";position:absolute;inset:26px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    pointer-events:none;
+  }
+  .cover::after{
+    content:"";position:absolute;inset:32px;
+    border:1px solid rgba(196,151,47,.35);
+    border-radius:4px;
+    pointer-events:none;
+  }
+  .emblem{
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    margin-bottom:30px;
+  }
+  .emblem svg{filter:drop-shadow(0 8px 20px rgba(44,38,32,.10));}
+  .emblem .wordmark{
+    font-family:'Playfair Display',serif;font-style:italic;
+    font-size:1.15rem;color:var(--muted);letter-spacing:.01em;
+  }
+  .maker{
+    display:flex;justify-content:center;align-items:center;gap:9px;
+    font-family:'Rubik',sans-serif;font-size:.74rem;letter-spacing:.14em;color:var(--muted);
+  }
+  .maker em{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;letter-spacing:0;color:var(--ink);}
+  .maker svg{display:block}
+  .cover-eyebrow{
+    font-family:'Rubik',sans-serif;font-weight:500;font-size:.78rem;
+    letter-spacing:.42em;color:var(--gold);margin-bottom:30px;
+  }
+  .cover h1{
+    font-size:clamp(2.6rem,7vw,4.6rem);
+    font-weight:300;
+    color:var(--espresso);
+    letter-spacing:-.015em;
+    margin-bottom:6px;
+  }
+  .cover .rule{
+    width:64px;height:2px;margin:30px auto;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+  .cover-warm{
+    font-size:1.3rem;line-height:1.6;color:var(--sage);
+    max-width:30ch;font-weight:400;margin:0 auto 22px;
+  }
+  .cover .sub{
+    font-size:1.15rem;color:var(--muted);max-width:34ch;font-weight:300;
+  }
+  .cover .foot{
+    position:absolute;bottom:52px;left:0;right:0;
+    font-family:'Rubik',sans-serif;font-size:.74rem;letter-spacing:.22em;color:var(--muted);
+  }
+
+  /* ---------- SECTION ---------- */
+  .section{padding:96px 0;border-bottom:1px solid var(--line);}
+  .section:last-of-type{border-bottom:none}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  @media(max-width:720px){.two{grid-template-columns:1fr;gap:28px}}
+
+  /* ---------- STATS (bold dark band) ---------- */
+  .stats{
+    background:
+      radial-gradient(140% 120% at 100% 0%, #3A322A 0%, var(--espresso) 60%);
+    color:var(--cream);
+    padding:88px 0;
+    position:relative;
+  }
+  .stats .eyebrow{color:var(--gold-soft)}
+  .stats .eyebrow::after{background:linear-gradient(90deg,rgba(231,200,120,.5),transparent)}
+  .stats h2{color:#F6EFE2;font-weight:300;font-size:1.9rem;margin-bottom:44px;}
+  .grid-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  @media(max-width:720px){.grid-stats{grid-template-columns:repeat(2,1fr);gap:36px 20px}}
+  .stat{border-top:1px solid rgba(231,200,120,.28);padding-top:18px;}
+  .stat .n{
+    display:block;font-size:clamp(2.4rem,5vw,3.3rem);
+    color:var(--gold-soft);font-weight:500;line-height:1;letter-spacing:-.01em;
+  }
+  .stat .n small{font-size:1.1rem;font-family:'Heebo';color:var(--gold-soft);font-weight:400;}
+  .stat .l{display:block;margin-top:12px;font-size:.9rem;color:#D9CFBE;font-weight:300;}
+  .stats .story{
+    margin:46px 0 0;font-size:1.08rem;color:#EFE7D8;font-weight:300;
+    max-width:64ch;border-right:2px solid var(--gold);padding-right:20px;
+  }
+
+  /* ---------- COLLAB CARDS ---------- */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:12px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr}}
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px 28px;
+    position:relative;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(44,38,32,.09);}
+  .card .k{
+    font-family:'Playfair Display',serif;font-style:italic;
+    color:var(--gold);font-size:1.5rem;margin-bottom:14px;display:block;
+  }
+  .card h3{font-size:1.22rem;font-weight:500;margin-bottom:10px;color:var(--espresso);}
+  .card p{font-size:.98rem;color:var(--muted);margin:0;}
+
+  /* ---------- ASSETS ---------- */
+  .assets{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:16px;}
+  .assets li{display:flex;gap:16px;align-items:flex-start;font-size:1.05rem;}
+  .assets li::before{
+    content:"";flex:none;width:9px;height:9px;margin-top:11px;border-radius:50%;
+    background:var(--gold);box-shadow:0 0 0 4px rgba(196,151,47,.14);
+  }
+  .assets a{color:var(--sage);text-decoration:none;border-bottom:1px solid rgba(95,169,130,.4);}
+  .assets a:hover{border-color:var(--sage)}
+
+  /* ---------- INSTALL ---------- */
+  .install h2{font-size:1.7rem;font-weight:300;margin:0 auto 14px;text-align:center;}
+  .install .lead{margin:0 auto 30px;text-align:center;}
+  .stores{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .store-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 26px;border-radius:999px;
+    font-family:'Rubik',sans-serif;font-size:1rem;font-weight:500;
+    text-decoration:none;transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .store-btn.primary{background:var(--espresso);color:var(--cream);box-shadow:0 10px 26px rgba(44,38,32,.16);}
+  .store-btn.primary:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(44,38,32,.22);}
+  .store-btn.soon{background:transparent;color:var(--muted);border:1px solid var(--line);cursor:default;}
+  .store-btn.soon small{font-family:'Rubik';font-size:.72rem;letter-spacing:.08em;color:var(--gold);}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    text-align:center;
+    background:radial-gradient(120% 90% at 50% 100%, var(--cream-deep), var(--cream));
+    padding:110px 32px;
+  }
+  .cta h2{font-size:clamp(2rem,5vw,3rem);font-weight:300;color:var(--espresso);margin-bottom:20px;}
+  .cta .rule{width:56px;height:2px;margin:26px auto 34px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+  .contact{
+    display:inline-flex;flex-direction:column;gap:8px;
+    font-size:1.05rem;color:var(--ink);margin-top:6px;
+  }
+  .contact .name{font-family:'Playfair Display',serif;font-style:italic;font-size:1.4rem;color:var(--espresso);}
+  .contact .ph{color:var(--muted)}
+  .contact a{color:var(--sage);text-decoration:none;border-bottom:1px solid rgba(95,169,130,.4);}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.card{transition:none}}
+
+  @media print{
+    body{background:#fff}
+    .section,.stats,.cta,.cover{page-break-inside:avoid}
+    .cover{min-height:auto;padding:120px 32px}
+    .card:hover{transform:none;box-shadow:none}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="emblem">
+      <svg viewBox="0 0 72 74" width="86" height="88" role="img" aria-label="Ron Studio">
+        <path d="M14.7 44.9 A26 26 0 1 1 27.1 54.4 L13 62 Z" fill="#FFFDF8" stroke="#2C2620" stroke-width="3.4" stroke-linejoin="round"/>
+        <text x="35" y="40" text-anchor="middle" font-family="'Rubik','Heebo',sans-serif" font-weight="700" font-size="25" fill="#2C2620" direction="ltr">.R</text>
+      </svg>
+      <span class="wordmark">Ron Studio</span>
+    </div>
+    <div class="cover-eyebrow" id="cvEyebrow">הזמנה לשיתוף פעולה</div>
+    <h1>חוברת המתכונים שלי</h1>
+    <div class="rule"></div>
+    <p class="cover-warm" id="cvWarm" hidden></p>
+    <p class="sub">המקום שבו אלפי בשלנים ביתיים מחליטים כל יום מה לבשל — ומה לקנות.</p>
+    <div class="foot">ערכת שותפים · 2026</div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="wrap two">
+      <div class="reveal">
+        <div class="eyebrow">מי אנחנו</div>
+        <h2>אפליקציה אחת, שיחה יומית עם המטבח</h2>
+      </div>
+      <div class="reveal">
+        <p class="lead">"חוברת המתכונים שלי" היא אפליקציה חכמה לבשלנים ביתיים בישראל — מארגנת, מחפשת ומגישה מתכונים, עם עוזר בישול אישי, אדי.</p>
+        <p>הקהל שלנו לא גולש להשראה בלבד. הוא מגיע ברגע ההחלטה — מה מבשלים היום, ומה שמים בסל. זה בדיוק הרגע שבו מותג רוצה להיות נוכח.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="eyebrow reveal">המספרים · נכון ליולי 2026</div>
+      <h2 class="reveal">אפליקציה צעירה, בצמיחה מואצת</h2>
+      <div class="grid-stats">
+        <div class="stat reveal"><span class="n num">1,724</span><span class="l">משתמשים רשומים</span></div>
+        <div class="stat reveal"><span class="n num"><small>+</small>525</span><span class="l">חדשים בחודש האחרון</span></div>
+        <div class="stat reveal"><span class="n num">~500</span><span class="l">פעילים בכל חודש</span></div>
+        <div class="stat reveal"><span class="n num">5,479</span><span class="l">מתכונים במערכת</span></div>
+      </div>
+      <p class="story reveal">מאפס ל-1,724 משתמשים בחמישה חודשים — כשהחודש האחרון לבדו הוסיף רבע מהבסיס. קהל פעיל, מחובר, ובכוונת קנייה.</p>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="section">
+    <div class="wrap two">
+      <div class="reveal">
+        <div class="eyebrow">הקהל שלנו</div>
+        <h2>אנשים שמחליטים, לא רק גוללים</h2>
+      </div>
+      <div class="reveal">
+        <p>בשלנים ביתיים בישראל, דוברי עברית, שמקבלים החלטות קנייה יומיות למטבח — מוצרי מזון, מרכיבים וכלים.</p>
+        <p>הם מגיעים לאפליקציה ברגע הכוונה. בשביל מותג, זו לא חשיפה פסיבית — זו נוכחות בדיוק לפני הקנייה.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLAB -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow reveal center">דרכי שיתוף פעולה</div>
+      <div class="cards">
+        <div class="card reveal"><span class="k num">01</span><h3>נוכחות באפליקציה</h3><p>מתכון ממומן או אזכור מוצר בתוך מתכונים רלוונטיים — חשיפה בהקשר טבעי, לא באנר מנותק.</p></div>
+        <div class="card reveal"><span class="k num">02</span><h3>הטבה למועדון החברים</h3><p>הנחה בלעדית לחברי המועדון על מוצרי המותג. עלות מינימלית, חשיפה ישירה ותנועה לנקודות המכירה.</p></div>
+        <div class="card reveal"><span class="k num">03</span><h3>מתכון ומוצר</h3><p>מתכון שמשלב את המוצר או הכלי שלכם, עם קישור לרכישה — מהמטבח ישר לעגלה.</p></div>
+        <div class="card reveal"><span class="k num">04</span><h3>חבילת השקה משותפת</h3><p>קמפיין קצר וממוקד לרגל שיתוף הפעולה, שמייצר רגע נוכחות בולט לשני הצדדים.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSETS -->
+  <section class="section">
+    <div class="wrap two">
+      <div class="reveal">
+        <div class="eyebrow">הנכסים שלנו</div>
+        <h2>מה אנחנו מביאים לשולחן</h2>
+      </div>
+      <div class="reveal">
+        <ul class="assets">
+          <li><strong>מועדון חברים</strong>&nbsp;בהקמה — פלטפורמת הטבות ישירה לקהל.</li>
+          <li><strong>שף דגל</strong>&nbsp;— שיתוף פעולה עם שף מוביל, בהכנה.</li>
+          <li><strong>כתבת שיווק</strong>&nbsp;על האפליקציה — <a href="https://www.instagram.com/p/Dasn012DV1X/">לצפייה</a>.</li>
+          <li><strong>אדי</strong>&nbsp;— עוזר בישול חכם שמייצר קשר יומיומי עם המשתמש.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="section install">
+    <div class="wrap">
+      <div class="eyebrow center reveal">נסו בעצמכם</div>
+      <h2 class="reveal">הכי טוב — פשוט להיכנס ולבשל</h2>
+      <p class="lead reveal">נכנסים ל-<a href="https://myrecipebook.co.il" style="color:var(--sage);text-decoration:none;border-bottom:1px solid rgba(95,169,130,.4)" dir="ltr">myrecipebook.co.il</a>, שומרים למסך הבית, וזהו — האפליקציה שלכם. אפליקציית האנדרואיד עולה לגוגל פליי באמצע יולי, וגרסת ה-iPhone כבר בעבודה.</p>
+      <div class="stores reveal">
+        <a class="store-btn primary" href="https://myrecipebook.co.il">כניסה לאתר · שמירה למסך הבית</a>
+        <span class="store-btn soon">Google Play <small>בקרוב</small></span>
+        <span class="store-btn soon">App Store <small>בקרוב</small></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap reveal">
+      <div class="eyebrow center">בואו נדבר</div>
+      <h2>נבנה יחד משהו טעים</h2>
+      <div class="rule"></div>
+      <div class="contact">
+        <span class="name">רון · מייסד "חוברת המתכונים שלי"</span>
+        <a class="ph" href="mailto:myrecipebookapp1@gmail.com" dir="ltr">myrecipebookapp1@gmail.com</a>
+        <a class="ph" href="tel:+972549909590" dir="ltr">054-9909590</a>
+      </div>
+      <div class="maker" style="margin-top:44px">
+        <svg viewBox="0 0 72 74" width="30" height="31" role="img" aria-label="Ron Studio">
+          <path d="M14.7 44.9 A26 26 0 1 1 27.1 54.4 L13 62 Z" fill="#FFFDF8" stroke="#2C2620" stroke-width="3.6" stroke-linejoin="round"/>
+          <text x="35" y="40" text-anchor="middle" font-family="'Rubik','Heebo',sans-serif" font-weight="700" font-size="25" fill="#2C2620" direction="ltr">.R</text>
+        </svg>
+        <span>מבית&nbsp;&nbsp;<em>Ron Studio</em></span>
+      </div>
+    </div>
+  </section>
+
+<script>
+  (function(){
+    var BRANDS={
+      gad:{name:'מחלבות גד',warm:'כי לכל בוקר במטבח הישראלי יש טעם של גד — בואו נבשל אותו יחד, כל יום מחדש.'},
+      arcosteel:{name:'ארקוסטיל',warm:'מאחורי כל מנה שיוצאת מושלמת עומד הכלי הנכון. בואו נהיה שם — ברגע הבישול עצמו.'},
+      ninja:{name:'נינג\'ה',warm:'הפכתם כל מטבח ביתי למקצועי. עכשיו בואו נכניס את המתכונים ישר לתוך המכשיר.'}
+    };
+    try{
+      var b=new URLSearchParams(location.search).get('brand');
+      if(b&&BRANDS[b]){
+        document.getElementById('cvEyebrow').textContent='עבור '+BRANDS[b].name+' · הזמנה לשיתוף פעולה';
+        var w=document.getElementById('cvWarm');w.textContent=BRANDS[b].warm;w.hidden=false;
+        document.title='חוברת המתכונים שלי · '+BRANDS[b].name;
+      }
+    }catch(e){}
+  })();
+  (function(){
+    var els=[].slice.call(document.querySelectorAll('.reveal'));
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.15});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
