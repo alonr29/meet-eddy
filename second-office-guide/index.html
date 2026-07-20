@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>מדריך מעשי · משרד AI שני מאובטח</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F8F4EC;--cream-deep:#F1E7D6;--paper:#FFFDF8;--espresso:#2C2620;
+    --ink:#413B34;--muted:#8A7F71;--line:#E4D9C4;--sage:#5FA982;--sage-deep:#3F7D5D;
+    --peach:#F4B79B;--rose:#C97C63;--gold:#C4972F;--gold-soft:#E7C878;
+    --radius:20px;--maxw:940px;
+  }
+  *{box-sizing:border-box}
+  html{direction:rtl;scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Heebo','Rubik',sans-serif;font-weight:400;line-height:1.75;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .num{font-family:'Playfair Display',serif;font-variant-numeric:lining-nums;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .ltr{direction:ltr;unicode-bidi:isolate;}
+
+  /* eyebrow */
+  .eyebrow{font-family:'Rubik',sans-serif;font-weight:500;font-size:.72rem;letter-spacing:.26em;color:var(--gold);display:flex;align-items:center;gap:14px;margin:0 0 22px;}
+  .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold-soft),transparent);}
+  .eyebrow.center{justify-content:center}
+  .eyebrow.center::after,.eyebrow.center::before{content:"";width:46px;flex:none;height:1px;background:var(--gold-soft);}
+
+  h1,h2,h3,h4{font-weight:300;line-height:1.16;color:var(--espresso);margin:0;text-wrap:balance;}
+  .section{padding:80px 0;border-bottom:1px solid var(--line);}
+  .section:last-of-type{border-bottom:none}
+  .section h2{font-size:1.95rem;font-weight:300;letter-spacing:-.01em;margin-bottom:14px;}
+  .chap-no{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:1.05rem;display:block;margin-bottom:4px;}
+  p{margin:0 0 16px;max-width:66ch;}
+  .lead{font-size:1.15rem;color:var(--ink);}
+  strong{font-weight:600;color:var(--espresso);}
+
+  /* ---------- COVER ---------- */
+  .cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+    background:radial-gradient(120% 80% at 50% 0%, #FCF9F1 0%, var(--cream) 55%, var(--cream-deep) 100%);padding:76px 32px;position:relative;overflow:hidden;}
+  .cover::before{content:"";position:absolute;inset:26px;border:1px solid var(--line);border-radius:8px;pointer-events:none;}
+  .cover::after{content:"";position:absolute;inset:32px;border:1px solid rgba(196,151,47,.35);border-radius:4px;pointer-events:none;}
+  .emblem{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:26px;}
+  .emblem svg{filter:drop-shadow(0 8px 20px rgba(44,38,32,.10));}
+  .emblem .wordmark{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--muted);}
+  .cover .welcome{font-family:'Rubik',sans-serif;font-weight:500;font-size:.78rem;letter-spacing:.36em;color:var(--gold);margin-bottom:24px;}
+  .cover h1{font-size:clamp(2.3rem,6.4vw,4rem);font-weight:300;color:var(--espresso);letter-spacing:-.015em;margin-bottom:4px;}
+  .cover .rule{width:64px;height:2px;margin:26px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+  .cover .sub{font-size:1.2rem;color:var(--ink);max-width:38ch;font-weight:300;}
+  .cover .sub b{color:var(--espresso);font-weight:500;}
+  .cover .learn{margin-top:22px;font-size:1rem;color:var(--muted);max-width:44ch;}
+  .cover .foot{position:absolute;bottom:44px;left:0;right:0;font-family:'Rubik',sans-serif;font-size:.72rem;letter-spacing:.16em;color:var(--muted);}
+  .badge-fic{display:inline-block;margin-top:16px;font-family:'Rubik';font-size:.68rem;letter-spacing:.06em;color:var(--gold);border:1px solid var(--gold-soft);border-radius:20px;padding:4px 14px;background:rgba(231,200,120,.10);}
+
+  /* ---------- TOC ---------- */
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;margin-top:20px;}
+  @media(max-width:640px){.toc-grid{grid-template-columns:1fr}}
+  .toc-grid a{display:flex;gap:14px;align-items:baseline;text-decoration:none;color:var(--ink);padding:11px 16px;border:1px solid var(--line);border-radius:12px;background:var(--paper);transition:border-color .25s ease, transform .25s ease;}
+  .toc-grid a:hover{border-color:var(--gold-soft);transform:translateY(-2px);}
+  .toc-grid .tn{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:1.15rem;flex:none;min-width:22px;}
+  .toc-grid .tt{font-size:1rem;color:var(--espresso);}
+  .howto{margin-top:26px;}
+
+  /* ---------- DARK BAND ---------- */
+  .dark{background:radial-gradient(140% 120% at 100% 0%, #3A322A 0%, var(--espresso) 60%);color:var(--cream);}
+  .dark .eyebrow{color:var(--gold-soft)} .dark .eyebrow::after{background:linear-gradient(90deg,rgba(231,200,120,.5),transparent)}
+  .dark h2{color:#F6EFE2;}
+  .dark .lead{color:#EFE7D8;font-weight:300;}
+  .dark p{color:#E4DAC8;}
+  .dark strong{color:var(--gold-soft);}
+  .dark .chap-no{color:var(--gold-soft);}
+
+  /* ---------- TABLES ---------- */
+  .tbl-wrap{overflow-x:auto;margin:22px 0 6px;border-radius:14px;border:1px solid var(--line);}
+  table.tbl{width:100%;border-collapse:collapse;font-size:.97rem;background:var(--paper);min-width:520px;}
+  table.tbl thead th{background:var(--espresso);color:var(--cream);font-weight:500;text-align:right;padding:13px 18px;font-size:.92rem;letter-spacing:.01em;}
+  table.tbl tbody td{border-top:1px solid var(--line);padding:13px 18px;vertical-align:top;color:var(--ink);line-height:1.6;}
+  table.tbl tbody tr:nth-child(even) td{background:rgba(228,217,196,.16);}
+  table.tbl td:first-child{font-weight:600;color:var(--espresso);white-space:nowrap;}
+  table.tbl.wide td:first-child{white-space:normal;}
+  .forbid{color:var(--rose);}
+  .dark .tbl-wrap{border-color:rgba(231,200,120,.22);}
+  .dark table.tbl{background:rgba(255,253,248,.03);}
+  .dark table.tbl thead th{background:rgba(231,200,120,.14);color:var(--gold-soft);}
+  .dark table.tbl tbody td{border-top:1px solid rgba(231,200,120,.16);color:#E4DAC8;}
+  .dark table.tbl tbody tr:nth-child(even) td{background:rgba(255,253,248,.03);}
+  .dark table.tbl td:first-child{color:#F6EFE2;}
+
+  /* ---------- CALLOUT ---------- */
+  .callout{border-right:3px solid var(--gold);background:linear-gradient(270deg,rgba(196,151,47,.07),transparent 85%);padding:16px 20px;border-radius:0 14px 14px 0;margin:24px 0;}
+  .callout .ct{font-weight:600;color:var(--espresso);display:block;margin-bottom:2px;}
+  .callout p{margin:0;color:var(--ink);}
+  .callout.safe{border-right-color:var(--sage-deep);background:linear-gradient(270deg,rgba(95,169,130,.10),transparent 85%);}
+  .callout.safe .ct{color:var(--sage-deep);}
+  .dark .callout{background:linear-gradient(270deg,rgba(231,200,120,.12),transparent 85%);}
+  .dark .callout .ct{color:var(--gold-soft);}
+  .dark .callout p{color:#EFE7D8;}
+
+  /* ---------- LISTS ---------- */
+  ul.clean{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:12px;}
+  ul.clean li{display:flex;gap:14px;align-items:flex-start;font-size:1.03rem;color:var(--ink);}
+  ul.clean li::before{content:"";flex:none;width:8px;height:8px;margin-top:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(196,151,47,.14);}
+  .dark ul.clean li{color:#E4DAC8;}
+
+  /* ---------- CARDS ---------- */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px;}
+  @media(max-width:720px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px;transition:transform .3s ease,box-shadow .3s ease;}
+  .card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(44,38,32,.08);}
+  .card .i{font-size:1.5rem;display:block;margin-bottom:8px;}
+  .card h3{font-size:1.1rem;font-weight:600;color:var(--espresso);margin-bottom:6px;}
+  .card p{font-size:.96rem;color:var(--muted);margin:0;}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{margin-top:20px;display:grid;gap:14px;}
+  .tl{display:grid;grid-template-columns:auto 1fr;gap:18px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px 22px;position:relative;transition:transform .3s ease,box-shadow .3s ease;}
+  .tl:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(44,38,32,.07);}
+  .tl .tn{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:2rem;line-height:1;min-width:44px;text-align:center;}
+  .tl h3{font-size:1.14rem;font-weight:600;margin-bottom:5px;}
+  .tl p{font-size:.98rem;color:var(--muted);margin:0 0 6px;}
+  .tl .why{font-size:.92rem;color:var(--sage-deep);margin:6px 0 0;}
+
+  /* ---------- CODE ---------- */
+  .codewrap{margin:16px 0;}
+  .code-label{font-family:'Rubik',sans-serif;font-size:.74rem;letter-spacing:.08em;color:var(--gold);margin-bottom:7px;display:flex;align-items:center;gap:8px;}
+  .code-label::before{content:"◆";font-size:.6rem;}
+  pre.code{background:#231E19;color:#EDE3D2;border:1px solid #3A322A;border-radius:14px;padding:18px 20px;margin:0;font-family:'SF Mono',ui-monospace,'Menlo',monospace;font-size:.84rem;line-height:1.75;direction:ltr;text-align:left;overflow-x:auto;unicode-bidi:isolate;}
+  pre.code .k{color:var(--gold-soft);}
+  pre.code .s{color:#9FC7A8;}
+  pre.code .c{color:#8A7F71;}
+  .code-note{font-size:.92rem;color:var(--muted);margin:9px 2px 0;}
+
+  /* ---------- CHECKLIST ---------- */
+  .check{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:11px;}
+  .check li{display:flex;gap:13px;align-items:flex-start;font-size:1.02rem;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:13px 16px;}
+  .check li .box{flex:none;width:20px;height:20px;border:2px solid var(--gold);border-radius:6px;margin-top:2px;position:relative;}
+  .check li .box::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.8rem;font-weight:700;}
+
+  /* ---------- GLOSSARY ---------- */
+  .gloss{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+  @media(max-width:640px){.gloss{grid-template-columns:1fr}}
+  .gloss .g{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
+  .gloss .g dt{font-weight:600;color:var(--espresso);margin-bottom:4px;font-size:1.02rem;}
+  .gloss .g dt .en{font-family:'Rubik';font-size:.78rem;color:var(--gold);letter-spacing:.02em;margin-inline-start:7px;}
+  .gloss .g dd{margin:0;font-size:.95rem;color:var(--muted);line-height:1.6;}
+
+  /* ---------- FLOW (numbered inline) ---------- */
+  .flow{counter-reset:step;margin-top:18px;display:grid;gap:12px;}
+  .flow .f{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:baseline;}
+  .flow .f .fn{counter-increment:step;font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);font-size:1.3rem;min-width:34px;text-align:center;}
+  .flow .f .fn::before{content:counter(step);}
+  .flow .f p{margin:0;color:var(--ink);}
+  .dark .flow .f p{color:#E4DAC8;}
+
+  /* ---------- CLOSING ---------- */
+  .cta{text-align:center;background:radial-gradient(120% 90% at 50% 100%, var(--cream-deep), var(--cream));padding:96px 32px;}
+  .cta h2{font-size:clamp(1.9rem,5vw,2.8rem);font-weight:300;margin-bottom:14px;}
+  .cta .rule{width:56px;height:2px;margin:22px auto 28px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+  .cta .maker{display:flex;justify-content:center;align-items:center;gap:9px;font-family:'Rubik',sans-serif;font-size:.74rem;letter-spacing:.14em;color:var(--muted);margin-top:30px;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.card,.tl{transition:none}}
+
+  @media print{
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+    .cover{min-height:auto;padding:80px 32px;page-break-after:always}
+    .tl,.card,.check li,.callout,.gloss .g,.tbl-wrap,.codewrap{page-break-inside:avoid}
+    .card:hover,.tl:hover{transform:none;box-shadow:none}
+    .reveal{opacity:1;transform:none}
+    a{color:inherit;text-decoration:none}
+    .toc-grid a{border-color:var(--line)}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ========== COVER ========== -->
+  <header class="cover">
+    <div class="emblem">
+      <svg viewBox="0 0 66 74" width="76" height="84" role="img" aria-label="סמל מגן שכבות">
+        <path d="M33 3 L60 13 V37 C60 55 48 66 33 71 C18 66 6 55 6 37 V13 Z" fill="#FFFDF8" stroke="#2C2620" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M33 3 L60 13 V37 C60 55 48 66 33 71 C18 66 6 55 6 37 V13 Z" fill="none" stroke="rgba(196,151,47,.55)" stroke-width="1" transform="scale(.9) translate(3.6,3.6)"/>
+        <line x1="17" y1="28" x2="49" y2="28" stroke="#C4972F" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="17" y1="37" x2="49" y2="37" stroke="#2C2620" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="17" y1="46" x2="49" y2="46" stroke="#5FA982" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span class="wordmark">מדריך מעשי</span>
+    </div>
+    <div class="welcome">מהרעיון הראשון ועד פיילוט חי</div>
+    <h1>משרד AI שני מאובטח</h1>
+    <div class="rule"></div>
+    <p class="sub"><b>Sidecar חתום, ייעוץ עצמאי וחיבור בטוח לבוט.</b></p>
+    <p class="learn">איך מוסיפים למערכת קיימת "משרד שני" לייעוץ בלבד — בלי לסכן את הפעולות והזיכרון של המערכת הראשית.</p>
+    <span class="badge-fic">מדריך למתחילים · כל השמות והדוגמאות בדיוניים</span>
+    <div class="foot">גרסת מדריך · יולי 2026</div>
+  </header>
+
+  <!-- ========== TOC ========== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow reveal">מה יש בפנים</div>
+      <h2 class="reveal">תוכן העניינים</h2>
+      <nav class="toc-grid reveal">
+        <a href="#c1"><span class="tn">1</span><span class="tt">לפני שמתחילים: המטרה והגבולות</span></a>
+        <a href="#c2"><span class="tn">2</span><span class="tt">תמונת המערכת: שלוש שכבות ברורות</span></a>
+        <a href="#c3"><span class="tn">3</span><span class="tt">הכלים והידע שתצטרכו</span></a>
+        <a href="#c4"><span class="tn">4</span><span class="tt">בנייה צעד־אחר־צעד</span></a>
+        <a href="#c5"><span class="tn">5</span><span class="tt">אבטחה, פרטיות והפרדת אחריות</span></a>
+        <a href="#c6"><span class="tn">6</span><span class="tt">בדיקות לפני חיבור למערכת חיה</span></a>
+        <a href="#c7"><span class="tn">7</span><span class="tt">פריסה מבוקרת, ניטור ו־Rollback</span></a>
+        <a href="#c8"><span class="tn">8</span><span class="tt">תקלות אמיתיות ומה לומדים מהן</span></a>
+        <a href="#c9"><span class="tn">9</span><span class="tt">מתי המערכת מוכנה לשלב הבא</span></a>
+        <a href="#appx"><span class="tn">±</span><span class="tt">נספחים: צ׳קליסטים ו־Starter Prompt</span></a>
+      </nav>
+      <div class="callout howto reveal">
+        <span class="ct">איך לקרוא את המדריך</span>
+        <p>תחילה קראו את פרקים 1–3 להבנת התמונה. אחר כך בנו לפי השלבים. <strong>אל תדלגו על בדיקות או על תוכנית כיבוי.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CH1 ========== -->
+  <section class="section" id="c1">
+    <div class="wrap">
+      <span class="chap-no reveal">פרק ראשון</span>
+      <div class="eyebrow reveal">המטרה והגבולות</div>
+      <h2 class="reveal">לפני שמתחילים</h2>
+      <p class="lead reveal">משרד AI שני אינו "עוד צ׳אט". הוא שכבת ייעוץ עצמאית שמוסיפה זווית נוספת — בעוד שהמערכת הראשית נשארת בעלת הבית של המשתמש, הזיכרון והפעולות.</p>
+
+      <div class="callout reveal">
+        <span class="ct">🌱 הדוגמה שתלווה אותנו לאורך המדריך</span>
+        <p>נניח שיש לכם בוט בשם <strong>"נעמה"</strong> שמסייע בניהול גינה קהילתית: תזכורות השקיה, פגישות מתנדבים ורשימת משימות. אתם רוצים להוסיף משרד ייעוץ שני שיעזור בהחלטות מורכבות — למשל, האם לפתוח חלקה חדשה או לשנות חלוקת עבודה.</p>
+      </div>
+
+      <div class="tbl-wrap reveal">
+        <table class="tbl wide">
+          <thead><tr><th>המערכת הראשית</th><th>המשרד השני</th></tr></thead>
+          <tbody>
+            <tr><td>זיכרון, תזכורות, פעולות ואישור משתמש</td><td>ייעוץ בלבד, ללא כתיבה או ביצוע</td></tr>
+            <tr><td>מכירה את השיחה השוטפת</td><td>מקבלת רק הקשר קצר, מסונן ורלוונטי</td></tr>
+            <tr><td>מגיבה לבקשות יום־יומיות</td><td>נכנסת רק לשאלות החלטה, ביקורת או תקלה</td></tr>
+            <tr><td>יכולה לבצע פעולה מאושרת</td><td>לעולם אינה מבצעת פעולה בשלב הראשון</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout safe reveal">
+        <span class="ct">✨ כלל זהב</span>
+        <p>המשרד השני <strong>מוסיף חשיבה</strong>; הוא לא מחליף את המערכת הראשית ולא מקבל סמכות פעולה.</p>
+      </div>
+
+      <h3 class="reveal" style="font-size:1.2rem;font-weight:500;margin:30px 0 4px;">גבולות שחייבים להחליט עליהם מראש</h3>
+      <ul class="clean reveal">
+        <li>ייעוץ וקריאה בלבד בפיילוט הראשון.</li>
+        <li>אין מפתחות, סודות או מידע אישי בהודעות, בקוד או ביומן הפעילות.</li>
+        <li>לכל פעולה משמעותית נדרש אישור אנושי מפורש.</li>
+        <li>המערכת הראשית ממשיכה לעבוד גם אם המשרד השני כבוי או לא זמין.</li>
+        <li>משתמשים ונתיבים מאושרים מוגדרים במפורש; אין "גישה לכולם" כברירת מחדל.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== CH2 (dark) ========== -->
+  <section class="section dark" id="c2">
+    <div class="wrap">
+      <span class="chap-no reveal">פרק שני</span>
+      <div class="eyebrow reveal">שלוש שכבות ברורות</div>
+      <h2 class="reveal">תמונת המערכת</h2>
+      <p class="lead reveal">הפרדת שכבות הופכת את המערכת לקלה יותר לאבטחה, לבדיקה ולכיבוי. שלוש שכבות, לכל אחת תפקיד — ומה שאסור לה לעשות.</p>
+
+      <div class="tbl-wrap reveal">
+        <table class="tbl wide">
+          <thead><tr><th>שכבה</th><th>אחריות</th><th>מה אסור לה לעשות</th></tr></thead>
+          <tbody>
+            <tr><td>בוט קיים</td><td>ממשק המשתמש, פעולות קיימות, סינון ראשוני</td><td class="forbid">להחזיק מפתח ספק מודל או לפנות ישירות אליו</td></tr>
+            <tr><td>Gateway / Sidecar</td><td>אימות בקשה, ניתוב, מודל, חוזה תשובה</td><td class="forbid">לבצע פעולות משתמש או להיחשף לציבור ללא אימות</td></tr>
+            <tr><td>ידע מאושר</td><td>קבצים קפואים ומאומתים לפי תפקיד</td><td class="forbid">להשתנות בזמן ריצה או לכלול מידע לא מאושר</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="reveal" style="color:#F6EFE2;font-size:1.2rem;font-weight:500;margin:34px 0 4px;">זרימת בקשה פשוטה</h3>
+      <div class="flow reveal">
+        <div class="f"><span class="fn"></span><p>המשתמש שואל את הבוט שאלה החלטתית.</p></div>
+        <div class="f"><span class="fn"></span><p>הבוט בודק שהבקשה מורשית, קצרה ובטוחה לשליחה.</p></div>
+        <div class="f"><span class="fn"></span><p>הבוט חותם את הבקשה ושולח אותה ל־Gateway מאושר.</p></div>
+        <div class="f"><span class="fn"></span><p>ה־Gateway מאמת, מנתב ליועץ מתאים ומריץ את המודל ללא כלים.</p></div>
+        <div class="f"><span class="fn"></span><p>הוא בודק שהתשובה עומדת בחוזה קשיח ומחזיר אותה לבוט.</p></div>
+        <div class="f"><span class="fn"></span><p>הבוט מסנן שוב את התשובה ומציג אותה; אם משהו נכשל, הוא עונה בכנות לבד.</p></div>
+      </div>
+
+      <div class="callout reveal">
+        <span class="ct">💡 עיקרון חשוב</span>
+        <p>בדיקת בריאות של שירות מוכיחה שהשירות <strong>חי</strong>. היא אינה מוכיחה שהחתימה, המודל, ההרשאות וחוזה התשובה עובדים <strong>יחד</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CH3 ========== -->
+  <section class="section" id="c3">
+    <div class="wrap">
+      <span class="chap-no reveal">פרק שלישי</span>
+      <div class="eyebrow reveal">מה צריך על השולחן</div>
+      <h2 class="reveal">הכלים והידע שתצטרכו</h2>
+      <div class="tbl-wrap reveal">
+        <table class="tbl wide">
+          <thead><tr><th>רכיב</th><th>למה הוא נחוץ</th><th>חלופה למתחילים</th></tr></thead>
+          <tbody>
+            <tr><td>Python 3.11+</td><td>לבוט, ל־Gateway ולבדיקות</td><td>התקנה מקומית או סביבת פיתוח בענן</td></tr>
+            <tr><td>Git + ענף ניסוי</td><td>שמירת שינויים, ביקורת ו־Rollback</td><td>GitHub Desktop מתאים להתחלה</td></tr>
+            <tr><td>שירות פריסה</td><td>הרצת ה־Sidecar בנפרד</td><td>כל שירות שמאפשר משתני סביבה ו־HTTPS</td></tr>
+            <tr><td>חשבון API למודל</td><td>הרצת ייעוץ דרך Responses API</td><td>ספק מודל אחר, עם אותו עקרון הפרדה</td></tr>
+            <tr><td>בוט הודעות</td><td>נקודת כניסה למשתמש</td><td>Telegram בדוגמה; העיקרון מתאים גם לערוץ אחר</td></tr>
+            <tr><td>בדיקות אוטומטיות</td><td>הוכחה שלא שברתם יכולות קיימות</td><td>מתחילים ב־unittest או pytest</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="reveal" style="font-size:1.2rem;font-weight:500;margin:30px 0 4px;">לפני שכותבים שורת קוד</h3>
+      <ul class="clean reveal">
+        <li>זהו מהו העותק האמיתי שממנו נפרסת המערכת.</li>
+        <li>צרו ענף ניסוי צר ונקי; אל תדביקו ניסוי ישן ורחב אל הענף הראשי.</li>
+        <li>רשמו מה נשאר בבעלות המערכת הראשית ומה מותר למשרד השני.</li>
+        <li>הגדירו דרך כיבוי מהירה: מתג feature flag, שירות נפרד ותוכנית rollback.</li>
+        <li>הכינו סביבה מקומית בלי קובצי סוד בתוך המאגר.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== CH4 ========== -->
+  <section class="section" id="c4">
+    <div class="wrap">
+      <span class="chap-no reveal">פרק רביעי</span>
+      <div class="eyebrow reveal">הלב של המדריך</div>
+      <h2 class="reveal">בנייה צעד־אחר־צעד</h2>
+      <p class="lead reveal">עשרה שלבים, לפי הסדר. כל שלב נשען על הקודם — אל תדלגו קדימה.</p>
+
+      <div class="timeline">
+        <div class="tl reveal"><span class="tn">01</span><div><h3>תכננו את המשרד לפני שבונים אותו</h3><p>התחילו בקבוצה קטנה של תפקידים בדיוניים: Coordinator לניתוב, Security Advisor, UX Advisor, Method Teacher ו־External Auditor. כל תפקיד מקבל רשימת מקורות מותרת וחתימת פתיחה קבועה.</p><p class="why">למה חתימה קבועה? כדי להוכיח שהתשובה הגיעה ממסלול מאושר, ולא רק מטקסט שנראה משכנע.</p></div></div>
+        <div class="tl reveal"><span class="tn">02</span><div><h3>בנו registry סגור</h3><p>אל תאפשרו למשתמש לבחור שם תפקיד חופשי או מקור ידע חופשי. הגדירו רשימה סגורה של role + mode + signature + sources. מי שמבקר את המערכת צריך להישאר מחוץ לרשימת היועצים.</p></div></div>
+        <div class="tl reveal"><span class="tn">03</span><div><h3>ארזו ידע קפוא ומאומת</h3><p>במקום למשוך קבצים בזמן ריצה, ארזו snapshot: רשימת קבצים מאושרים, hash לכל קובץ, גודל מרבי ומסמך provenance. השירות טוען רק מה שמופיע ברשימה.</p></div></div>
+        <div class="tl reveal"><span class="tn">04</span><div><h3>הגדירו חוזים קשיחים</h3><p>בקשה ותשובה אינן "JSON כללי". הן חוזה. הלקוח והשרת חייבים להסכים בדיוק על שמות השדות, סוגיהם, המגבלות והמשמעות.</p>
+          <div class="codewrap"><div class="code-label">דוגמת בקשה</div><pre class="code"><span class="k">{</span> <span class="k">"version"</span>: <span class="s">"v1"</span>, <span class="k">"request_id"</span>: <span class="s">"&lt;UUID&gt;"</span>, <span class="k">"question"</span>: <span class="s">"&lt;QUESTION&gt;"</span> <span class="k">}</span></pre></div>
+          <div class="codewrap"><div class="code-label">דוגמת תשובה</div><pre class="code"><span class="k">{</span> <span class="k">"version"</span>: <span class="s">"v1"</span>, <span class="k">"request_id"</span>: <span class="s">"&lt;UUID&gt;"</span>, <span class="k">"status"</span>: <span class="s">"ok"</span>,
+  <span class="k">"role"</span>: <span class="s">"&lt;ROLE&gt;"</span>, <span class="k">"answer"</span>: <span class="s">"&lt;TEXT&gt;"</span>, <span class="k">"sources"</span>: [<span class="s">"&lt;SOURCE&gt;"</span>],
+  <span class="k">"safety"</span>: <span class="k">{</span> <span class="k">"read_only"</span>: true, <span class="k">"stored"</span>: false <span class="k">}</span> <span class="k">}</span></pre></div>
+          <p class="code-note">מה זה אומר בפשטות: כל הודעה נראית תמיד אותו דבר — אותם שדות, באותו סדר. אם משהו חסר או שונה, השרת דוחה מיד.</p>
+        </div></div>
+        <div class="tl reveal"><span class="tn">05</span><div><h3>חתמו על כל בקשה</h3><p>חתמו ב־HMAC על method, path, זמן, request ID ו־hash של גוף הבקשה. בצד השרת בדקו key ID, חלון זמן קצר, UUID תקין ומניעת replay. שמרו סוד נפרד לכל ערוץ עתידי.</p></div></div>
+        <div class="tl reveal"><span class="tn">06</span><div><h3>בנו את הליבה בלי רשת</h3><p>השאירו את לוגיקת הניתוב, החוזים והוולידציה טהורים: בלי משתני סביבה, בלי Telegram ובלי קריאות HTTP. הזריקו את המודל כתלות. כך אפשר לבדוק כמעט הכול מקומית.</p></div></div>
+        <div class="tl reveal"><span class="tn">07</span><div><h3>הוסיפו Adapter צר למודל</h3><p>ה־Adapter צריך לבצע בקשה אחת ל־Responses API, ללא כלים, עם store=false, timeout משותף ומגבלת גודל. אל תתנו לשגיאות ספק המודל להיחשף ללקוח או ליומן.</p></div></div>
+        <div class="tl reveal"><span class="tn">08</span><div><h3>עטפו ב־Gateway קטן</h3><p>חשפו בפיילוט רק health endpoint ו־consult endpoint. דחו routes לא מוכרים, headers כפולים, גוף גדול, חיבורים איטיים, redirect ו־proxy סביבתי. השתמשו ב־HTTPS וב־allowlist מדויקת של host.</p></div></div>
+        <div class="tl reveal"><span class="tn">09</span><div><h3>חברו את הבוט בגשר דק</h3><p>הבוט לא צריך להכיר את הידע הפנימי או את מפתח ספק המודל. הוא בודק הרשאה, מסנן קלט, חותם בקשה אחת, מאמת את התשובה ומציג אותה. המסלול הישן נשאר כבוי.</p></div></div>
+        <div class="tl reveal"><span class="tn">10</span><div><h3>הוסיפו ייעוץ דו־מוחי — רק אחרי שהגשר יציב</h3><p>לשאלות חשובות, המערכת הראשית והמשרד השני מגבשים עמדות עצמאיות במקביל. שופט מציג מסקנה, הסכמות, מחלוקת וצעד הבא.</p><p class="why">חובה לשמור את שתי העמדות המפורשות — כדי למנוע עיגון שקט של צד אחד.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CH5 (dark) ========== -->
+  <section class="section dark" id="c5">
+    <div class="wrap">
+      <span class="chap-no reveal">פרק חמישי</span>
+      <div class="eyebrow reveal">שבעה שערים</div>
+      <h2 class="reveal">אבטחה, פרטיות והפרדת אחריות</h2>
+      <p class="lead reveal">בכל נקודת מעבר יש שער שבודק דבר אחד. יחד, הם שומרים שהמשרד השני יישאר יועץ בלבד.</p>
+      <div class="tbl-wrap reveal">
+        <table class="tbl wide">
+          <thead><tr><th>שער</th><th>מה בודקים</th><th>למה זה חשוב</th></tr></thead>
+          <tbody>
+            <tr><td>כניסה לבוט</td><td>משתמש, צ׳אט פרטי וסוג הודעה</td><td>מונע שימוש לא מורשה</td></tr>
+            <tr><td>קלט</td><td>אורך, סודות, פרטים אישיים ונתיבים פנימיים</td><td>לא שולחים מידע מיותר</td></tr>
+            <tr><td>Transport</td><td>HTTPS, host מדויק, ללא redirect/proxy</td><td>בקשה חתומה לא מגיעה ליעד אחר</td></tr>
+            <tr><td>Gateway</td><td>HMAC, freshness, replay, גודל וקצב</td><td>רק לקוח מורשה עובר</td></tr>
+            <tr><td>מודל</td><td>ללא tools, read-only, store=false</td><td>המשרד השני אינו מבצע פעולה</td></tr>
+            <tr><td>תשובה</td><td>schema, מקורות, חתימה וסריקה</td><td>טקסט לא מאושר לא מגיע למשתמש</td></tr>
+            <tr><td>לוגים</td><td>קוד אירוע בלבד, בלי תוכן או secrets</td><td>אפשר לאבחן בלי לדלוף</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout reveal">
+        <span class="ct">🔒 Fail closed — במילים פשוטות</span>
+        <p>אם משהו לא תואם במדויק — דוחים. לא "מתקנים" HMAC, לא מתעלמים משדה לא צפוי, ולא מציגים תשובה שחסרה בה הוכחת זהות. <strong>עדיף שהבוט יאמר שהייעוץ השני לא זמין — מאשר שיסתמך על משהו לא מאומת.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CH6 ========== -->
+  <section class="section" id="c6">
+    <div class="wrap">
+      <span class="chap-no reveal">פרק שישי</span>
+      <div class="eyebrow reveal">מוכיחים לפני שמחברים</div>
+      <h2 class="reveal">בדיקות לפני חיבור למערכת חיה</h2>
+      <div class="tbl-wrap reveal">
+        <table class="tbl wide">
+          <thead><tr><th>שכבה</th><th>מה מוכיחים</th><th>דוגמאות</th></tr></thead>
+          <tbody>
+            <tr><td>Unit</td><td>כל רכיב עושה דבר אחד נכון</td><td>HMAC, schema, hash, timeout, allowlist</td></tr>
+            <tr><td>Integration</td><td>הרכיבים מדברים זה עם זה</td><td>בקשה חתומה מתקבלת; תשובה לא חוקית נדחית</td></tr>
+            <tr><td>Smoke מבוקר</td><td>המציאות דומה למה שבדקתם</td><td>health, בקשה סינתטית חתומה, מסלול כבד</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="reveal" style="font-size:1.2rem;font-weight:500;margin:30px 0 4px;">תרחישים שליליים שחובה לבדוק</h3>
+      <ul class="clean reveal">
+        <li>חתימה לא נכונה, request ID חוזר וזמן ישן.</li>
+        <li>שני headers באותו שם או JSON עם key כפול.</li>
+        <li>URL עם redirect, host לא מאושר או proxy סביבתי.</li>
+        <li>תשובה גדולה מדי, schema חסר או מקור לא מאושר.</li>
+        <li>ביטול בקשה באמצע והוכחה שחיבור HTTP נסגר.</li>
+        <li>תצורה חסרה: פיצ׳ר הייעוץ נכשל בבטחה והבוט הרגיל ממשיך.</li>
+        <li>שאלה עם הקשר קצר ושאלה עם הקשר מלא; מודדים זמן ולא רק סטטוס.</li>
+      </ul>
+
+      <div class="callout safe reveal">
+        <span class="ct">✅ זכרו</span>
+        <p>בדיקות ירוקות הן הוכחה <strong>לקוד</strong>. הן אינן הוכחה <strong>לפריסה</strong>. בדיקת smoke חיה היא שלב נפרד.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CH7 ========== -->
+  <section class="section" id="c7">
+    <div class="wrap">
+      <span class="chap-no reveal">פרק שביעי</span>
+      <div class="eyebrow reveal">לאוויר, בזהירות</div>
+      <h2 class="reveal">פריסה מבוקרת, ניטור ו־Rollback</h2>
+
+      <h3 class="reveal" style="font-size:1.2rem;font-weight:500;margin:8px 0 4px;">סדר פריסה בטוח</h3>
+      <div class="flow reveal">
+        <div class="f"><span class="fn"></span><p>הקימו Sidecar נפרד — תהליך אחד ו־replica אחד בפיילוט; אל תוסיפו אותו לתהליך הבוט.</p></div>
+        <div class="f"><span class="fn"></span><p>הזינו סודות בממשק הפריסה בלבד — אל תעתיקו ערכים לצ׳אט, לקובץ או ל־Git.</p></div>
+        <div class="f"><span class="fn"></span><p>בדקו health — רק הוכחה שהשירות חי.</p></div>
+        <div class="f"><span class="fn"></span><p>בדקו smoke חתום — הוכחה שהבוט יכול להגיע ל־Gateway עם אימות תקין.</p></div>
+        <div class="f"><span class="fn"></span><p>פרסו את הבוט עם flag כבוי — היכולות הקיימות נשארות הפעילות היחידות.</p></div>
+        <div class="f"><span class="fn"></span><p>בדקו יכולות קיימות — תזכורות, פעולות והודעות יום־יומיות חייבות להישאר תקינות.</p></div>
+        <div class="f"><span class="fn"></span><p>הפעילו פיילוט מוגבל — רק משתמש וצ׳אט פרטיים מאושרים, ורק באישור מפורש.</p></div>
+      </div>
+
+      <div class="cards" style="margin-top:30px">
+        <div class="card reveal">
+          <span class="i">📊</span><h3>מדדים בטוחים לניטור</h3>
+          <p>קוד תוצאה כללי (200 / 401 / 429 / 502 / 503) · זמן כולל של הבקשה, בלי תוכן השאלה · מספר נסיונות fallback, circuit breaker או retry · סוג כשל קבוע (למשל timeout או missing required label), ללא exception text חופשי.</p>
+        </div>
+        <div class="card reveal">
+          <span class="i">↩️</span><h3>Rollback לפני שמפעילים</h3>
+          <p>כבו את feature flag של הייעוץ · הפעילו מחדש את שירות הבוט · אם יש חשד לחשיפת סוד: עצרו את ה־Sidecar וסובבו את הסוד בשני הצדדים · אל תשנו את המערכת הראשית, הזיכרון או הפעולות כדי לבטל פיילוט ייעוץ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CH8 ========== -->
+  <section class="section" id="c8">
+    <div class="wrap">
+      <span class="chap-no reveal">פרק שמיני</span>
+      <div class="eyebrow reveal">מהשטח</div>
+      <h2 class="reveal">תקלות אמיתיות ומה לומדים מהן</h2>
+      <div class="tbl-wrap reveal">
+        <table class="tbl wide">
+          <thead><tr><th>סימן</th><th>הסיבה האפשרית</th><th>הפעולה הנכונה</th></tr></thead>
+          <tbody>
+            <tr><td>health תקין, ייעוץ נכשל</td><td>הבעיה אחרי הרשת: חתימה, חוזה, מודל או timeout</td><td>הוסיפו event בטוח ובדיקה חתומה; אל תנחשו</td></tr>
+            <tr><td>503 קבוע במסלול כבד</td><td>תקציב זמן קצר לעומת שתי קריאות והקשר ארוך</td><td>מדדו מסלול מלא; יישרו timeouts והגדירו reasoning effort</td></tr>
+            <tr><td>שירות עובד פעם ואז מתעלם</td><td>handler או polling לא יציבים</td><td>בדקו שתי פקודות רצופות והוסיפו לוג כניסה נטול תוכן</td></tr>
+            <tr><td>שופט סיים אך מיזוג נפסל</td><td>וולידטור קשיח מדי לתצוגת Markdown</td><td>נרמלו קישוט קוסמטי בלבד; שמרו על דרישת העמדות המפורשות</td></tr>
+            <tr><td>אימות OAuth נכשל אחרי restart</td><td>מצב אישור נשמר רק בזיכרון</td><td>השתמשו ב־payload חתום וקצר־חיים או אחסון מתמיד</td></tr>
+            <tr><td>ענף ניסוי מציג מאות שינויים</td><td>הענף רחב/ישן מול main</td><td>אל תמזגו; צרו ענף נקי והעבירו רק שינוי מאושר</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout reveal">
+        <span class="ct">🔍 איך מאבחנים בלי לחשוף מידע</span>
+        <p>לא מדפיסים שגיאת ספק, headers, URL מלא, גוף בקשה או תשובה. במקום זאת רושמים event קבוע: למשל status, timeout או schema mismatch. לאחר שהגורם נמצא, מסירים או מצמצמים את התצפית.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CH9 ========== -->
+  <section class="section" id="c9">
+    <div class="wrap">
+      <span class="chap-no reveal">פרק תשיעי</span>
+      <div class="eyebrow reveal">מה הלאה</div>
+      <h2 class="reveal">מתי המערכת מוכנה לשלב הבא</h2>
+      <p class="lead reveal">פיילוט ייעוץ יציב אינו סוף הדרך. הוא בסיס בטוח לשדרוגים — אבל רק אם הם נעשים אחד־אחד ונמדדים.</p>
+      <div class="tbl-wrap reveal">
+        <table class="tbl wide">
+          <thead><tr><th>יכולת עתידית</th><th>תנאי כניסה</th><th>זהירות</th></tr></thead>
+          <tbody>
+            <tr><td>זיהוי חכם של שאלות ייעוץ</td><td>מסלול הייעוץ יציב ומדוד</td><td>השאירו פעולות ברורות במסלול המהיר; אל תסווגו כל הודעה במודל</td></tr>
+            <tr><td>זיכרון חי מינימלי</td><td>redaction, freshness, allowlist ומקור חתום</td><td>שלחו עובדות רלוונטיות בלבד, לא היסטוריה חופשית</td></tr>
+            <tr><td>שופט דו־מוחי</td><td>עמדות עצמאיות ומבנה מחלוקת קשיח</td><td>אפשרו לשופט לומר "אין מספיק מידע"</td></tr>
+            <tr><td>Retry מוגבל</td><td>מסלול read-only וניטור עלות</td><td>ניסיון אחד בלבד, אותו הקשר, תקציב קצר והודעת המשך עקבית</td></tr>
+            <tr><td>חיבור ChatGPT / MCP</td><td>אותו Gateway כבר יציב</td><td>credential נפרד לכל ערוץ; ביטול ערוץ אחד לא משבית אחר</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout safe reveal">
+        <span class="ct">📈 עיקרון שדרוג</span>
+        <p>שדרגו איכות רק אחרי שיש לכם מדד: הצלחה, זמן, עלות ומשוב משתמש. אחרת קשה לדעת אם השיפור אמיתי.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== APPENDICES ========== -->
+  <section class="section" id="appx">
+    <div class="wrap">
+      <span class="chap-no reveal">נספחים</span>
+      <div class="eyebrow reveal">כלים לדרך</div>
+      <h2 class="reveal">צ׳קליסטים ו־Starter Prompt</h2>
+
+      <h3 class="reveal" style="font-size:1.25rem;font-weight:500;margin:26px 0 2px;">נספח א · צ׳קליסט לפני הפעלה</h3>
+      <ul class="check reveal">
+        <li><span class="box"></span>התפקידים, המקורות והחתימות מוגדרים ברשימה סגורה.</li>
+        <li><span class="box"></span>הידע הקפוא עבר אימות hash וגודל.</li>
+        <li><span class="box"></span>אין למשרד השני tools או הרשאות כתיבה.</li>
+        <li><span class="box"></span>HMAC, freshness ו־replay נבדקו.</li>
+        <li><span class="box"></span>התשובה נבדקת מול schema ומקור מאושר.</li>
+        <li><span class="box"></span>ה־Sidecar נפרד והבוט אינו מחזיק מפתח ספק מודל.</li>
+        <li><span class="box"></span>רצה סוויטת בדיקות מלאה ו־smoke חתום.</li>
+        <li><span class="box"></span>feature flag כבוי כברירת מחדל.</li>
+        <li><span class="box"></span>נבדקה תוכנית rollback והבוט הרגיל נותר תקין.</li>
+        <li><span class="box"></span>ניטור אינו מכיל סודות, גוף הודעה או פרטי משתמש.</li>
+      </ul>
+
+      <h3 class="reveal" style="font-size:1.25rem;font-weight:500;margin:38px 0 2px;">נספח ב · תבנית משתני סביבה</h3>
+      <p class="reveal" style="color:var(--muted);font-size:.98rem;">אלו שמות כלליים בלבד. אל תשמרו ערכים אמיתיים בקובץ שמועלה ל־Git.</p>
+      <div class="codewrap reveal"><div class="code-label">ENV · תבנית</div><pre class="code"><span class="c"># סוד — מוזן רק בממשק הפריסה</span>
+MODEL_API_KEY=<span class="s">&lt;SECRET_FROM_DEPLOYMENT_PLATFORM&gt;</span>
+GATEWAY_HMAC_KEY_ID=<span class="s">&lt;NON_SECRET_LABEL&gt;</span>
+GATEWAY_HMAC_SECRET=<span class="s">&lt;SECRET_FROM_DEPLOYMENT_PLATFORM&gt;</span>
+
+<span class="c"># מתג ראשי — כבוי כברירת מחדל</span>
+BOT_SECOND_OFFICE_ENABLED=<span class="k">false</span>
+
+GATEWAY_URL=<span class="s">https://&lt;APPROVED_HOST&gt;</span>
+GATEWAY_ALLOWED_HOST=<span class="s">&lt;APPROVED_HOST&gt;</span>
+BOT_ALLOWED_USER_ID=<span class="s">&lt;PRIVATE_CONFIGURATION&gt;</span>
+BOT_ALLOWED_CHAT_ID=<span class="s">&lt;PRIVATE_CONFIGURATION&gt;</span></pre></div>
+
+      <h3 class="reveal" style="font-size:1.25rem;font-weight:500;margin:38px 0 2px;">נספח ג · Starter Prompt לפרויקט חדש</h3>
+      <div class="callout reveal">
+        <span class="ct">💬 מדביקים בשיחה חדשה</span>
+        <p>אני בונה מערכת ייעוץ AI שנייה לצד בוט קיים. המשרד השני חייב להיות read-only, מופרד מהבוט ומהמפתחות שלו, מאומת בבקשות חתומות, עם knowledge snapshot מאושר, חוזי בקשה ותשובה קשיחים, feature flag כבוי כברירת מחדל ותוכנית rollback. הוביל אותי צעד־אחר־צעד: תכנון, בדיקות מקומיות, Gateway, smoke חתום, פריסה מוגבלת — ורק אחר כך הפעלה. אל תבקש ממני מפתחות או סודות בצ׳אט.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GLOSSARY ========== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow reveal">מילון קצר</div>
+      <h2 class="reveal">שבעה מונחים, בשפה פשוטה</h2>
+      <div class="gloss reveal">
+        <dl class="g"><dt>Sidecar <span class="en">סיידקאר</span></dt><dd>שירות קטן ונפרד שמבצע עבודה מסוכנת או רגישה במקום הבוט הראשי.</dd></dl>
+        <dl class="g"><dt>Gateway <span class="en">שער</span></dt><dd>שער ששומר מי רשאי להיכנס ואיזו בקשה מותרת.</dd></dl>
+        <dl class="g"><dt>HMAC <span class="en">חתימה</span></dt><dd>חתימה סודית שמוכיחה שהבקשה לא שונתה והגיעה מצד מורשה.</dd></dl>
+        <dl class="g"><dt>Feature flag <span class="en">מתג</span></dt><dd>מתג שמאפשר להדליק או לכבות יכולת בלי למחוק קוד.</dd></dl>
+        <dl class="g"><dt>Fail closed <span class="en">נעילה בטוחה</span></dt><dd>כשיש ספק — דוחים ולא מנסים "לנחש" שהכול בסדר.</dd></dl>
+        <dl class="g"><dt>Smoke test <span class="en">בדיקת עשן</span></dt><dd>בדיקה קצרה בעולם אמיתי שמוודאת שהחלקים באמת מחוברים.</dd></dl>
+        <dl class="g"><dt>Rollback <span class="en">חזרה לאחור</span></dt><dd>דרך בטוחה ומהירה לחזור למצב יציב אחרי תקלה.</dd></dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CLOSING ========== -->
+  <section class="cta">
+    <div class="wrap reveal">
+      <div class="eyebrow center">עכשיו תורכם</div>
+      <h2>בנייה בטוחה מתחילה בצעד קטן ומדוד</h2>
+      <div class="rule"></div>
+      <p class="lead" style="margin:0 auto;max-width:46ch">משרד שני טוב לא נמדד בכמה שהוא עושה — אלא בכמה שאפשר לסמוך עליו. בנו לאט, בדקו הכול, ושמרו תמיד דרך חזרה.</p>
+      <div class="maker">
+        <svg viewBox="0 0 66 74" width="26" height="29" role="img" aria-label="סמל מגן">
+          <path d="M33 3 L60 13 V37 C60 55 48 66 33 71 C18 66 6 55 6 37 V13 Z" fill="#FFFDF8" stroke="#2C2620" stroke-width="3.4" stroke-linejoin="round"/>
+          <line x1="17" y1="30" x2="49" y2="30" stroke="#C4972F" stroke-width="3" stroke-linecap="round"/>
+          <line x1="17" y1="40" x2="49" y2="40" stroke="#5FA982" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span>מדריך מעשי · פיילוט בטוח</span>
+      </div>
+    </div>
+  </section>
+
+<script>
+  (function(){
+    var els=[].slice.call(document.querySelectorAll('.reveal'));
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.12});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
