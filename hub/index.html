@@ -33,6 +33,18 @@
   footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:26px;}
   footer em{font-family:'Playfair Display',serif;font-style:italic;}
   .save{background:#FBF6EA;border:1px dashed var(--gold);border-radius:14px;padding:12px 14px;font-size:.82rem;color:var(--ink);margin-bottom:22px;text-align:center;}
+  .btn.qr{background:transparent;border:1px solid var(--gold);color:var(--gold);width:100%;flex:none;}
+  .qrmodal{position:fixed;inset:0;background:var(--cream);z-index:999;display:none;align-items:center;justify-content:center;padding:20px;}
+  .qrmodal.on{display:flex;}
+  .qrbox{text-align:center;width:100%;max-width:420px;}
+  .qrbox h3{margin:0 0 4px;font-size:1.3rem;color:var(--espresso);font-weight:600;}
+  .qrbox .sub{margin:0 0 18px;color:var(--muted);font-size:.9rem;}
+  .qrframe{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 8px 24px rgba(44,38,32,.10);}
+  .qrframe svg{display:block;width:100%;height:auto;}
+  .qrbox .hint{margin:16px 0 18px;color:var(--muted);font-size:.85rem;}
+  .qrclose{background:var(--espresso);color:var(--cream);border:none;border-radius:12px;padding:14px 34px;
+    font-family:inherit;font-size:.95rem;font-weight:500;cursor:pointer;}
+  body.locked{overflow:hidden;}
 </style>
 </head>
 <body>
@@ -50,6 +62,19 @@
 
   <div class="general">
     <a href="https://alonr29.github.io/meet-eddy/partners/" target="_blank" rel="noopener">👁️ תצוגת החוברת הכללית</a>
+  </div>
+
+  <!-- BUSINESS CARD -->
+  <div class="card">
+    <h2>🪪 כרטיס הביקור שלי</h2>
+    <p class="who">לשלוח למי שפגשת · <b>טלפון, מייל, וואטסאפ ורשתות</b></p>
+    <div class="row">
+      <a class="btn open" href="https://ronalon-card.netlify.app/" target="_blank" rel="noopener">פתח כרטיס</a>
+      <button class="btn copy" data-copy="https://ronalon-card.netlify.app/">העתק לינק</button>
+    </div>
+    <div class="row">
+      <button class="btn qr" id="qrOpen">📷 הצג QR לסריקה</button>
+    </div>
   </div>
 
   <!-- APP GUIDE -->
@@ -117,6 +142,19 @@
   <footer>מבית <em>Ron Studio</em></footer>
 </div>
 
+<!-- QR FULLSCREEN -->
+<div class="qrmodal" id="qrModal" role="dialog" aria-modal="true" aria-label="קוד QR לכרטיס הביקור">
+  <div class="qrbox">
+    <h3>רון אלון</h3>
+    <p class="sub">מנהל מוצר · מייסד חוברת המתכונים שלי</p>
+    <div class="qrframe">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="קוד QR לכתובת ronalon-card.netlify.app"><path stroke="#2c2620" d="M2 2.5h7m1 0h3m1 0h1m1 0h1m2 0h3m3 0h2m1 0h7m-33 1h1m5 0h1m1 0h1m1 0h2m1 0h1m1 0h5m2 0h1m1 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m2 0h2m3 0h2m1 0h2m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m2 0h2m5 0h2m2 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h2m3 0h4m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h2m4 0h3m1 0h2m1 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h2m4 0h1m1 0h6m2 0h1m-23 1h3m1 0h1m1 0h1m5 0h2m1 0h1m2 0h1m1 0h1m2 0h3m2 0h3m-32 1h1m1 0h1m3 0h3m1 0h2m1 0h1m1 0h2m1 0h2m2 0h1m1 0h2m3 0h1m1 0h1m-31 1h2m1 0h2m2 0h2m1 0h1m1 0h3m1 0h1m3 0h1m4 0h1m1 0h3m-31 1h1m2 0h2m1 0h1m1 0h4m4 0h3m1 0h2m2 0h1m3 0h2m1 0h1m-33 1h3m2 0h2m2 0h1m1 0h1m1 0h2m5 0h2m2 0h2m1 0h3m-29 1h2m1 0h1m3 0h2m2 0h1m1 0h1m4 0h1m3 0h1m2 0h1m2 0h2m1 0h1m-33 1h2m3 0h3m1 0h1m2 0h3m3 0h1m3 0h1m2 0h4m2 0h1m-32 1h1m1 0h2m3 0h6m1 0h1m2 0h2m1 0h4m2 0h1m1 0h4m-32 1h1m1 0h2m1 0h2m3 0h2m1 0h4m1 0h1m4 0h1m1 0h1m1 0h3m-30 1h1m2 0h3m1 0h3m3 0h2m1 0h1m1 0h2m3 0h2m1 0h2m4 0h1m-32 1h3m1 0h2m5 0h1m1 0h2m2 0h1m1 0h3m4 0h1m2 0h2m-31 1h1m1 0h2m2 0h3m2 0h3m3 0h8m3 0h3m-32 1h4m2 0h7m1 0h2m1 0h3m2 0h1m2 0h1m1 0h3m2 0h1m-33 1h1m1 0h2m3 0h1m3 0h1m3 0h1m1 0h1m2 0h1m2 0h1m1 0h2m2 0h1m2 0h1m-33 1h1m1 0h2m1 0h3m2 0h1m1 0h2m3 0h1m1 0h1m1 0h2m1 0h1m2 0h3m1 0h1m-32 1h1m1 0h3m8 0h1m3 0h1m3 0h1m2 0h1m3 0h5m-33 1h1m1 0h2m2 0h4m1 0h3m1 0h3m4 0h1m1 0h5m-21 1h3m3 0h1m1 0h1m1 0h1m1 0h2m2 0h1m3 0h1m1 0h3m-33 1h7m2 0h3m2 0h2m1 0h2m1 0h2m1 0h2m1 0h1m1 0h1m2 0h1m-32 1h1m5 0h1m3 0h2m1 0h1m1 0h4m2 0h1m1 0h2m3 0h5m-33 1h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h2m1 0h1m2 0h2m2 0h5m2 0h2m-33 1h1m1 0h3m1 0h1m1 0h4m2 0h2m5 0h1m3 0h1m2 0h1m3 0h1m-33 1h1m1 0h3m1 0h1m1 0h3m1 0h1m1 0h2m2 0h1m2 0h3m1 0h2m2 0h2m-31 1h1m5 0h1m2 0h2m2 0h3m1 0h2m6 0h3m2 0h1m-31 1h7m2 0h1m4 0h1m2 0h1m2 0h1m2 0h2m6 0h1"/></svg>
+    </div>
+    <p class="hint">כוונו את המצלמה אל הקוד</p>
+    <button class="qrclose" id="qrClose">סגור</button>
+  </div>
+</div>
+
 <script>
   var MAILS={
     gad:'נושא: הצעת שיתוף פעולה — חוברת המתכונים שלי\n\nשלום, אני רון, מייסד אפליקציית "חוברת המתכונים שלי" — קהילה של 1,724 בשלנים ביתיים פעילים שמחליטים כל יום מה לבשל ומה לקנות למקרר. ראיתי את המהלך השיווקי החדש שלכם, ויש לי הצעת שת"פ שמתאימה בול: נוכחות של גד בתוך מתכונים באפליקציה + הטבה בלעדית לחברי מועדון החברים שלנו על מוצרי גד.\n\nהכנתי חוברת קצרה עם כל הפרטים:\nhttps://alonr29.github.io/meet-eddy/partners/?brand=gad\n\nאשמח לשיחה קצרה. תודה, רון · 054-9909590 · myrecipebookapp1@gmail.com',
@@ -131,6 +169,14 @@
   function legacy(text,btn){var t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();try{document.execCommand('copy');flash(btn,'✓ הועתק');}catch(e){}document.body.removeChild(t);}
   document.querySelectorAll('.btn.copy').forEach(function(b){b.addEventListener('click',function(){copy(b.getAttribute('data-copy'),b);});});
   document.querySelectorAll('.btn.mail').forEach(function(b){b.addEventListener('click',function(){copy(MAILS[b.getAttribute('data-mail')],b);});});
+
+  var qm=document.getElementById('qrModal');
+  function qrShow(){qm.classList.add('on');document.body.classList.add('locked');}
+  function qrHide(){qm.classList.remove('on');document.body.classList.remove('locked');}
+  document.getElementById('qrOpen').addEventListener('click',qrShow);
+  document.getElementById('qrClose').addEventListener('click',qrHide);
+  qm.addEventListener('click',function(e){if(e.target===qm)qrHide();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')qrHide();});
 </script>
 </body>
 </html>
