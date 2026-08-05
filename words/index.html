@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>מילות הפעולה שלי</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#F8F4EC;--paper:#FFFDF8;--espresso:#2C2620;--ink:#413B34;--muted:#8A7F71;--line:#E7DCC8;--sage:#5FA982;--gold:#C4972F;}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Heebo',sans-serif;line-height:1.6;padding:20px 16px 60px;}
+  .wrap{max-width:560px;margin:0 auto;}
+  header{text-align:center;margin:14px 0 22px;}
+  header .logo{width:56px;height:58px;margin:0 auto 8px;display:block;filter:drop-shadow(0 6px 14px rgba(44,38,32,.12));}
+  header h1{font-weight:600;font-size:1.5rem;margin:0;color:var(--espresso);}
+  header p{margin:6px 0 0;color:var(--muted);font-size:.92rem;}
+  .save{background:#FBF6EA;border:1px dashed var(--gold);border-radius:14px;padding:12px 14px;font-size:.82rem;color:var(--ink);margin-bottom:18px;text-align:center;}
+  .search{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--paper);
+    font-family:inherit;font-size:1rem;color:var(--ink);margin-bottom:22px;}
+  .search:focus{outline:none;border-color:var(--sage);}
+  .search::placeholder{color:var(--muted);}
+  h2.sec{font-size:1.05rem;color:var(--espresso);font-weight:600;margin:26px 0 4px;}
+  p.seclead{margin:0 0 14px;color:var(--muted);font-size:.86rem;}
+  .word{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:15px 16px;margin-bottom:11px;
+    box-shadow:0 4px 12px rgba(44,38,32,.04);display:flex;align-items:flex-start;gap:13px;cursor:pointer;transition:transform .12s ease;}
+  .word:active{transform:scale(.985)}
+  .word .em{font-size:1.35rem;line-height:1.25;flex:none;}
+  .word .body{flex:1;min-width:0;}
+  .word .term{font-size:1.12rem;font-weight:600;color:var(--espresso);margin:0 0 2px;}
+  .word .what{margin:0;font-size:.9rem;color:var(--muted);}
+  .word .copied{color:var(--sage);font-weight:500;}
+  .person{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:11px 14px;margin-bottom:8px;
+    display:flex;align-items:baseline;gap:10px;cursor:pointer;transition:transform .12s ease;}
+  .person:active{transform:scale(.985)}
+  .person .nm{font-weight:600;color:var(--espresso);font-size:1rem;flex:none;}
+  .person .sp{font-size:.85rem;color:var(--muted);}
+  .person.off{opacity:.5}
+  .person.off .nm{text-decoration:line-through;}
+  .empty{text-align:center;color:var(--muted);font-size:.9rem;padding:24px 0;display:none;}
+  footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:30px;}
+  footer em{font-family:'Playfair Display',serif;font-style:italic;}
+  .back{display:block;text-align:center;margin:22px 0 0;color:var(--sage);font-weight:500;font-size:.95rem;
+    text-decoration:none;border-bottom:1px solid rgba(95,169,130,.4);width:fit-content;margin-inline:auto;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <svg class="logo" viewBox="0 0 72 74" role="img" aria-label="Ron Studio">
+      <path d="M14.7 44.9 A26 26 0 1 1 27.1 54.4 L13 62 Z" fill="#FFFDF8" stroke="#2C2620" stroke-width="3.4" stroke-linejoin="round"/>
+      <text x="35" y="40" text-anchor="middle" font-family="Heebo,sans-serif" font-weight="700" font-size="25" fill="#2C2620" direction="ltr">.R</text>
+    </svg>
+    <h1>מילות הפעולה שלי</h1>
+    <p>מה להגיד לאדי, ומה קורה כשאומרים</p>
+  </header>
+
+  <div class="save">📌 שמור אותי במסך הבית — כשאתה לא זוכר מה להגיד, זה נמצא פה. הקש על שורה כדי להעתיק אותה.</div>
+
+  <input class="search" id="q" type="search" placeholder="חפש מילה או שם…" autocomplete="off" />
+
+  <h2 class="sec">🔤 מילות פעולה</h2>
+  <p class="seclead">תגיד את המילה, ואדי עושה את הדבר. בלי הסבר, בלי הקדמה.</p>
+
+  <div class="word" data-copy="עוגן">
+    <span class="em">⚓</span>
+    <div class="body"><p class="term">עוגן</p>
+    <p class="what">אדי עוצר הכל, קורא מחדש את הכללים ואת הקוד עצמו, וכותב שורת אימות טרייה לפני שהוא ממשיך.</p></div>
+  </div>
+
+  <div class="word" data-copy="שוטר">
+    <span class="em">👮</span>
+    <div class="body"><p class="term">שוטר · אזולאי</p>
+    <p class="what">מזעיק את אזולאי לבדיקה מכנית מול כללי הברזל, בעיניים נקיות שלא ראו את השיחה.</p></div>
+  </div>
+
+  <div class="word" data-copy="עדכן">
+    <span class="em">🗂️</span>
+    <div class="body"><p class="term">עדכן</p>
+    <p class="what">סוגר שיחה בשש פעולות: מסמך סיכום · רישום בנוטיון · שמירה בגיט · פרומפט מוכן לשיחה הבאה · סדר השיחות · וסגירת הפנקס.</p></div>
+  </div>
+
+  <div class="word" data-copy="פשוט">
+    <span class="em">💬</span>
+    <div class="body"><p class="term">פשוט</p>
+    <p class="what">אדי עוצר ומסביר את הכל מחדש בשפה רגילה, בלי אף מונח טכני.</p></div>
+  </div>
+
+  <div class="word" data-copy="פנקס?">
+    <span class="em">📒</span>
+    <div class="body"><p class="term">פנקס?</p>
+    <p class="what">מציג את פנקס הדרישות הנוכחי ומצליב אותו מול כל מה שביקשת בשיחה, כדי שכלום לא ייפול.</p></div>
+  </div>
+
+  <div class="word" data-copy="משוב">
+    <span class="em">📝</span>
+    <div class="body"><p class="term">משוב</p>
+    <p class="what">מתייק הערה של בודק מגוגל פליי — הציטוט והצילום — לקובץ המשוב, ומעדכן את המונה.</p></div>
+  </div>
+
+  <div class="word" data-copy="סיכום שבוע">
+    <span class="em">📊</span>
+    <div class="body"><p class="term">סיכום שבוע</p>
+    <p class="what">מפיק דוח של מנוע הידע: מה קרה השבוע, ומה שווה ללמוד מזה.</p></div>
+  </div>
+
+  <div class="word" data-copy="ישיבה">
+    <span class="em">🗓️</span>
+    <div class="body"><p class="term">ישיבה</p>
+    <p class="what">פותח את ישיבת יום ראשון בחמישה צעדים, סעיף-סעיף, עד שהכל נסגר ומארכב.</p></div>
+  </div>
+
+  <h2 class="sec">🎺 קורא למומחה בשם</h2>
+  <p class="seclead">תגיד את השם, והמומחה נכנס. אדי מנצח, לא מנגן.</p>
+
+  <div class="person" data-copy="חזי"><span class="nm">חזי</span><span class="sp">סקירה מקיפה של מצב האפליקציה לפני שדרוג</span></div>
+  <div class="person" data-copy="שלמה"><span class="nm">שלמה</span><span class="sp">ניתוח בעיות טכניות לעומק</span></div>
+  <div class="person" data-copy="דנה"><span class="nm">דנה</span><span class="sp">‏QA מקיף לאפליקציה</span></div>
+  <div class="person" data-copy="רינה"><span class="nm">רינה</span><span class="sp">עוזרים קוליים — ניתוח, תכנון וקוד</span></div>
+  <div class="person" data-copy="בני"><span class="nm">בני</span><span class="sp">פרומפטים ל-Lovable</span></div>
+  <div class="person" data-copy="מאיה"><span class="nm">מאיה</span><span class="sp">בניית קומפוננטות UI ל-Lovable</span></div>
+  <div class="person" data-copy="עוז"><span class="nm">עוז</span><span class="sp">אבטחה — סורק את הקוד האמיתי</span></div>
+  <div class="person" data-copy="שירי"><span class="nm">שירי</span><span class="sp">פוסטים, סטוריז, רילס וקופי</span></div>
+  <div class="person" data-copy="יוסף"><span class="nm">יוסף</span><span class="sp">קמפיינים ממומנים, תקציב וטרגוט</span></div>
+  <div class="person" data-copy="יואב"><span class="nm">יואב</span><span class="sp">סריקת מתחרים</span></div>
+  <div class="person" data-copy="ספיר"><span class="nm">ספיר</span><span class="sp">ניתוח כמותי של ביצועי רילסים</span></div>
+  <div class="person" data-copy="נתן"><span class="nm">נתן</span><span class="sp">אסטרטגיית שיווק, קהל יעד ומשפך</span></div>
+  <div class="person" data-copy="טלי"><span class="nm">טלי</span><span class="sp">רכזת ההשקות, צ'קליסט יום הלאונץ'</span></div>
+  <div class="person" data-copy="נועה"><span class="nm">נועה</span><span class="sp">שיתופי פעולה, מונטיזציה ותמחור</span></div>
+  <div class="person" data-copy="תמר"><span class="nm">תמר</span><span class="sp">כתיבה בשלוש גרסאות</span></div>
+  <div class="person" data-copy="יעל"><span class="nm">יעל</span><span class="sp">מנקה טקסט שנשמע כמו AI</span></div>
+  <div class="person" data-copy="ניר"><span class="nm">ניר</span><span class="sp">חשיבה בשישה שלבים, ניתוח אפשרויות</span></div>
+  <div class="person" data-copy="זוהר"><span class="nm">זוהר</span><span class="sp">תיעדוף — מה לעשות קודם</span></div>
+  <div class="person" data-copy="אריאל"><span class="nm">אריאל</span><span class="sp">חשיבה בין-תחומית</span></div>
+  <div class="person" data-copy="שחר"><span class="nm">שחר</span><span class="sp">ניתוח אנשים, מניעים ודינמיקות כוח</span></div>
+  <div class="person" data-copy="רוני"><span class="nm">רוני</span><span class="sp">חקירה לעומק על נושא חדש</span></div>
+  <div class="person" data-copy="אסף"><span class="nm">אסף</span><span class="sp">פירוק עבודה קיימת לעקרונות</span></div>
+  <div class="person" data-copy="אביב"><span class="nm">אביב</span><span class="sp">סימולציית לקוח על דף נחיתה</span></div>
+  <div class="person" data-copy="דליה"><span class="nm">דליה</span><span class="sp">תיעוד לנוטיון ולמסד</span></div>
+  <div class="person" data-copy="עומר"><span class="nm">עומר</span><span class="sp">הנדסת פרומפטים</span></div>
+  <div class="person" data-copy="תומר"><span class="nm">תומר</span><span class="sp">תמלול וניתוח הקלטות</span></div>
+  <div class="person" data-copy="עמית"><span class="nm">עמית</span><span class="sp">עיצוב חוויית משתמש למסך או פיצ'ר חדש</span></div>
+  <div class="person" data-copy="עדי"><span class="nm">עדי</span><span class="sp">עיצוב UX — גיבוי, בתקופת מבחן</span></div>
+  <div class="person" data-copy="דור"><span class="nm">דור</span><span class="sp">בניית אוטומציות שרצות לבד</span></div>
+  <div class="person" data-copy="נחשון"><span class="nm">נחשון</span><span class="sp">העלאה לגוגל פליי ולאפ סטור</span></div>
+  <div class="person" data-copy="אורי"><span class="nm">אורי</span><span class="sp">קידום בחנויות (ASO) בעברית</span></div>
+  <div class="person" data-copy="אופיר"><span class="nm">אופיר</span><span class="sp">הנהלת חשבונות ודוחות כספיים</span></div>
+  <div class="person" data-copy="דוד"><span class="nm">דוד</span><span class="sp">מסמכים בעברית — PDF, וורד, מצגת</span></div>
+  <div class="person" data-copy="רותם"><span class="nm">רותם</span><span class="sp">עברית באתרים — RTL וטיפוגרפיה</span></div>
+  <div class="person" data-copy="נחמיה"><span class="nm">נחמיה</span><span class="sp">מתכנן מחלקה, סוכן או סקיל חדש</span></div>
+  <div class="person" data-copy="אליאב"><span class="nm">אליאב</span><span class="sp">בניית סוכן שותף — חיצוני, אדי רק מפנה אליו</span></div>
+  <div class="person off" data-copy="מעיין"><span class="nm">מעיין</span><span class="sp">בניית אוטומציות — הוחלפה בדור</span></div>
+
+  <h2 class="sec">🛡️ ארבעת השערים</h2>
+  <p class="seclead">הבקרה של המשרד. כל אחד בודק ציר אחר, ואף אחד לא בודק את עצמו.</p>
+
+  <div class="person" data-copy="אזולאי"><span class="nm">אזולאי</span><span class="sp">בדיקה מכנית מול כללי הברזל</span></div>
+  <div class="person" data-copy="בצלאל"><span class="nm">בצלאל</span><span class="sp">בדיקה מבנית — האם התכנון נכון</span></div>
+  <div class="person" data-copy="שלהבת"><span class="nm">שלהבת</span><span class="sp">האם זה תואם את שיטת אִימפּרוּב</span></div>
+  <div class="person" data-copy="גדעון"><span class="nm">גדעון</span><span class="sp">בדיקה התנהגותית — האם זה באמת עובד</span></div>
+
+  <h2 class="sec">🧱 כלים</h2>
+  <p class="seclead">לא אנשים — מנגנונים שאפשר להפעיל בשם.</p>
+
+  <div class="person" data-copy="מנהל עבודה"><span class="nm">מנהל עבודה</span><span class="sp">מפזר עבודה מכנית למודלים זולים, וחוסך מכסה</span></div>
+  <div class="person" data-copy="חלץ שיטה"><span class="nm">חלץ שיטה</span><span class="sp">מפרק סוכן קיים ומסביר איך הוא עובד — הכלי "חולץ", בחגורת נחמיה</span></div>
+
+  <p class="empty" id="empty">לא נמצאה מילה כזאת.</p>
+
+  <a class="back" href="https://alonr29.github.io/meet-eddy/hub/">↩ חזרה למרכז השת"פים</a>
+  <footer>מבית <em>Ron Studio</em></footer>
+</div>
+
+<script>
+  function flash(el){
+    var t=el.querySelector('.what')||el.querySelector('.sp');
+    if(!t)return; var o=t.textContent, c=t.className;
+    t.textContent='✓ הועתק'; t.className=c+' copied';
+    setTimeout(function(){t.textContent=o;t.className=c;},1200);
+  }
+  function copy(text,el){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){flash(el)},function(){legacy(text,el)});
+    } else {legacy(text,el);}
+  }
+  function legacy(text,el){
+    var t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';
+    document.body.appendChild(t);t.select();try{document.execCommand('copy');flash(el);}catch(e){}document.body.removeChild(t);
+  }
+  document.querySelectorAll('[data-copy]').forEach(function(el){
+    el.addEventListener('click',function(){copy(el.getAttribute('data-copy'),el);});
+  });
+
+  var q=document.getElementById('q'), empty=document.getElementById('empty');
+  var rows=[].slice.call(document.querySelectorAll('.word,.person'));
+  var heads=[].slice.call(document.querySelectorAll('h2.sec,p.seclead'));
+  q.addEventListener('input',function(){
+    var v=q.value.trim(); var any=false;
+    rows.forEach(function(r){
+      var hit = !v || r.textContent.indexOf(v)!==-1;
+      r.style.display = hit?'':'none'; if(hit)any=true;
+    });
+    heads.forEach(function(h){h.style.display = v?'none':'';});
+    empty.style.display = any?'none':'block';
+  });
+</script>
+</body>
+</html>
