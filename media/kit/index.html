@@ -1,0 +1,697 @@
+<!doctype html>
+<!--
+  חוברת שיתופי הפעולה של "חוברת המתכונים שלי". נבנה על ידי דוד, 4.10.2026 (שלב 3).
+  עיצוב: עמית (_working/2026-10-04-brand-wow/amit-design-direction.md, סעיף 6).
+  טקסטים: שירי (_working/2026-10-04-brand-wow/shiri-copy.md). מספרים: נועה, ותגיות התזונה מהמדידה של אדי (4.10.2026, 16:29).
+  קהלים: ?for=dietitians · ?for=brand · כל ערך אחר או בלי פרמטר = general.
+  קהל חדש: מעתיקים את הבלוקים של general, מחליפים טקסטים, מוסיפים מילה לרשימה בסקריפט שבראש הקובץ ושורה אחת ל-CSS.
+-->
+<html lang="he" dir="rtl" data-aud="general">
+<head>
+<meta charset="utf-8">
+<script>(function(){var d=document.documentElement,a=(new URLSearchParams(location.search).get('for')||'').toLowerCase();d.setAttribute('data-aud',/^(brand|dietitians)$/.test(a)?a:'general');d.classList.add('js');})();</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>חוברת המתכונים שלי · הזמנה לשיתוף פעולה</title>
+<meta name="description" content="אפליקציה ישראלית שבה שומרים מתכונים, בונים רשימת קניות ומחליטים מה לבשל. אדי, השף הדיגיטלי, הוא הפנים שלה.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="חוברת המתכונים שלי">
+<meta property="og:title" content="חוברת המתכונים שלי · הזמנה לשיתוף פעולה">
+<meta property="og:description" content="אפליקציה ישראלית שבה שומרים מתכונים, בונים רשימת קניות ומחליטים מה לבשל. אדי, השף הדיגיטלי, הוא הפנים שלה.">
+<meta property="og:url" content="https://alonr29.github.io/meet-eddy/media/kit/">
+<meta property="og:image" content="https://alonr29.github.io/meet-eddy/media/kit/img/og.jpeg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="אדי, השף הדיגיטלי של חוברת המתכונים שלי">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F8F4EC">
+<link rel="icon" type="image/png" href="img/icon-180.png">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<link rel="preload" as="image" type="image/webp" href="img/hero-s1.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,400&amp;display=swap&amp;text=0123456789%2C.%2B%25KEdy">
+<style>
+:root{
+--cream:#F8F4EC; --cream-deep:#F1E7D6; --paper:#FFFDF8;
+--espresso:#2C2620; --ink:#413B34; --muted:#6F6558; --line:#E4D9C4;
+--sage:#5FA982; --sage-ink:#357052; --peach:#F4B79B;
+--gold:#C4972F; --gold-ink:#8C6A1C; --gold-soft:#E7C878;
+--app-bar:#FAF8F3;
+}
+
+/* קהלים: בלוק שלא מונה את הקהל הנוכחי מוסתר. שורה אחת לכל קהל. */
+html[data-aud="brand"]      [data-for]:not([data-for~="brand"]),
+html[data-aud="dietitians"] [data-for]:not([data-for~="dietitians"]),
+html[data-aud="general"]    [data-for]:not([data-for~="general"]){display:none!important}
+[hidden]{display:none!important}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--cream);color:var(--ink);
+font-family:'Heebo',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:400;font-size:16px;line-height:1.7;
+-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3,p,ul,figure{margin:0}
+ul{padding:0;list-style:none}
+a{color:inherit}
+.num{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:500;font-variant-numeric:lining-nums}
+[dir="ltr"]{unicode-bidi:isolate}
+.nowrap{white-space:nowrap}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--gold-ink);outline-offset:3px;border-radius:6px}
+
+/* תמונה: טוען = קרם עם הלוגו בשקיפות 15%, נטען = הופעה רכה, שגיאה = נשאר כמו טוען */
+.js .ph img{opacity:0;transition:opacity .24s ease}
+.js .ph img.ok{opacity:1}
+.ph img.bad{visibility:hidden}
+
+/* == מכשיר ביחס אמיתי (מסך 1320 על 2868) == */
+.device{--w:216px;--b:calc(var(--w) * .028);--r:calc(var(--w) * .15);
+position:relative;width:var(--w);padding:var(--b);border-radius:var(--r);
+background:linear-gradient(160deg,#4B4139 0%,#2C2620 46%,#1C1814 100%);
+box-shadow:0 0 0 1px rgba(44,38,32,.22),0 34px 60px -28px rgba(44,38,32,.50),0 12px 24px -14px rgba(44,38,32,.28)}
+.device .screen{position:relative;overflow:hidden;aspect-ratio:1320/2868;
+border-radius:calc(var(--r) - var(--b));background:var(--app-bar)}
+.device .screen::before{content:"";position:absolute;inset:0;background:url(img/icon-180.png) center/34% no-repeat;opacity:.15}
+/* הצילום צמוד לתחתית; הפס העליון בצבע כותרת האפליקציה */
+.device .screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 100%}
+.device .island{position:absolute;z-index:2;top:calc(var(--w) * .032);inset-inline:0;margin-inline:auto;
+width:31%;height:calc(var(--w) * .088);border-radius:999px;background:#0E0C0A}
+
+/* == 1. השער == */
+.cover{position:relative;overflow:hidden;text-align:center;
+background:radial-gradient(120% 70% at 50% 0%,#FCF9F2 0%,var(--cream) 55%,var(--cream-deep) 100%);
+padding:40px 24px 52px}
+.cover::before,.cover::after{content:"";position:absolute;pointer-events:none}
+.cover::before{inset:12px;border:1px solid var(--line);border-radius:10px}
+.cover::after{inset:17px;border:1px solid rgba(196,151,47,.40);border-radius:6px}
+.cover-in{position:relative;z-index:1}
+.cover-text{display:flex;flex-direction:column;align-items:center}
+
+.sign{display:inline-flex;align-items:center;gap:11px;text-align:start}
+.sign .face{flex:none;width:42px;height:42px;border-radius:50%;padding:2px;background:var(--paper);
+box-shadow:0 0 0 1px rgba(196,151,47,.55),0 6px 14px -8px rgba(44,38,32,.35)}
+.sign .face img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.sign b{display:block;font-weight:600;font-size:15px;line-height:1.25;color:var(--espresso)}
+.sign small{display:block;font-size:12.5px;line-height:1.35;color:var(--muted)}
+
+.eyebrow{display:flex;align-items:center;justify-content:center;gap:12px;margin:24px 0 0;
+font-size:13px;font-weight:500;line-height:1.4;color:var(--gold-ink)}
+.eyebrow::before,.eyebrow::after{content:"";flex:none;width:26px;height:1px;background:var(--gold);opacity:.7}
+
+.cover h1{margin:12px 0 0;max-width:340px;font-weight:300;font-size:31px;line-height:1.2;color:var(--espresso);text-wrap:balance}
+.h1b{margin:8px 0 0;max-width:340px;font-size:17px;line-height:1.5;color:var(--sage-ink);text-wrap:balance}
+.lede{margin:28px 0 0;max-width:34ch;font-size:16px;line-height:1.7;color:var(--ink);text-wrap:pretty}
+
+/* שורת הגיבור בנייד: המכשיר בצד ההתחלה, המספרים בצד הסוף */
+.c-hero{width:100%;max-width:342px;margin:24px auto 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center}
+.hero{position:relative}
+.hero::before{content:"";position:absolute;inset:-50px -70px;z-index:-1;
+background:radial-gradient(closest-side,rgba(196,151,47,.17),rgba(196,151,47,0) 72%)}
+.hero .device{--w:clamp(160px,50vw,200px)}
+.live{display:flex;flex-direction:column;align-items:flex-start;text-align:start;min-width:0}
+.live .big .n{display:block;font-size:clamp(38px,11.6vw,48px);line-height:.95;color:var(--espresso)}
+.cnt{display:inline-block}
+.cnt.counting{font-variant-numeric:tabular-nums lining-nums}
+.live .rule{display:block;width:40px;height:2px;margin:10px 0 8px;background:linear-gradient(to left,var(--gold),rgba(196,151,47,0))}
+.live .l{display:block;font-size:13px;line-height:1.4;color:var(--muted)}
+.live .l b{display:block;font-weight:500;font-size:14px;color:var(--espresso)}
+.live .small{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);width:100%}
+.live .small .n{display:block;font-size:clamp(22px,6.8vw,28px);line-height:1;color:var(--espresso)}
+.live .small .l{margin-top:5px}
+
+/* == 2. אדי, הרצועה הכהה היחידה == */
+.eddy{background:radial-gradient(140% 120% at 100% 0%,#3B332B 0%,var(--espresso) 62%);color:#EFE7D8;padding:64px 24px 72px}
+.eddy .wrap{max-width:1080px;margin:0 auto}
+.eddy .portrait{border-radius:22px;overflow:hidden;aspect-ratio:4/5;background:#3B332B;
+box-shadow:0 0 0 1px rgba(231,200,120,.28),0 30px 60px -30px rgba(0,0,0,.6)}
+.eddy .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.eddy .eb{margin:30px 0 0;font-size:13px;font-weight:500;color:var(--gold-soft)}
+.eddy h2{margin:8px 0 0;font-weight:300;font-size:34px;line-height:1.15;color:#F6EFE2}
+.eddy h2 i{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;color:var(--gold-soft)}
+.eddy .role{margin:6px 0 0;font-size:15px;color:#CDBFA6}
+.eddy .txt > p:not([class]){margin:16px 0 0;font-size:17px;line-height:1.7;color:#E2D8C6;max-width:46ch}
+.eddy ul{margin:20px 0 0;display:grid;gap:10px}
+.eddy li{display:flex;gap:12px;align-items:baseline;font-size:16px;line-height:1.55;color:#F1EADC}
+.eddy li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold-soft);
+box-shadow:0 0 0 4px rgba(231,200,120,.14);transform:translateY(-2px)}
+/* החץ בגופן המערכת: ב-Heebo הוא מוריד שני קובצי סמלים (38KB) בשביל תו אחד */
+.arr{font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+.eddy .closing{margin:22px 0 0;padding-inline-start:16px;border-inline-start:2px solid var(--gold);font-size:16px;line-height:1.65;color:#F1EADC;max-width:46ch}
+
+/* == מקטעים בהירים == */
+.section{padding:64px 24px;border-bottom:1px solid var(--line)}
+.section .wrap{max-width:1080px;margin:0 auto}
+.kicker{display:flex;align-items:center;gap:14px;margin:0 0 14px;font-size:13px;font-weight:500;line-height:1.4;color:var(--gold-ink)}
+.kicker::after{content:"";flex:1;height:1px;background:linear-gradient(to left,var(--gold-soft),rgba(231,200,120,0))}
+.section h2{font-weight:300;font-size:28px;line-height:1.25;color:var(--espresso);text-wrap:balance}
+.intro{margin:10px 0 0;font-size:16px;line-height:1.7;color:var(--muted);max-width:60ch}
+
+/* == 3. הסיור == */
+/* ריפוד תחתון גדול: הגלילה האופקית חותכת גם את הצל */
+.tour{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;margin:30px -24px 0;
+padding:6px 24px 78px;scroll-padding-inline-start:24px;scrollbar-width:none;overscroll-behavior-x:contain}
+.tour::-webkit-scrollbar{display:none}
+.tour:focus-visible{outline-offset:-2px;border-radius:12px}
+.tour figure{flex:0 0 auto;scroll-snap-align:start;width:200px}
+.tour figcaption{margin:0 0 14px;min-height:62px}
+.tour figcaption b,.td-text b{display:block;font-size:15.5px;font-weight:500;line-height:1.35;color:var(--espresso)}
+.tour figcaption span,.td-text span{display:block;margin-top:2px;font-size:13.5px;line-height:1.45;color:var(--muted)}
+.tour .device{--w:200px}
+/* רשימת הקניות: חיתוך מרובע בלי המחלקה "אחר", לא טלפון (במכשיר היה נשאר מקום ריק) */
+.tour-detail{display:grid;gap:14px}
+
+/* חיתוך אמיתי מצילום מסך, ביחס קבוע. בטעינה: הלוגו בשקיפות 15% */
+.shot{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:12px;aspect-ratio:4/3;background:var(--app-bar)}
+.shot.sq{max-width:420px;aspect-ratio:1/1;border-radius:18px;box-shadow:0 24px 44px -30px rgba(44,38,32,.45)}
+.shot::before{content:"";position:absolute;inset:0;background:url(img/icon-180.png) center/18% no-repeat;opacity:.15}
+.shot img{position:relative;width:100%;height:100%;object-fit:cover}
+.aud-shot{margin-top:22px;max-width:440px}
+
+/* == 4. הקהל == */
+.asof{margin:28px 0 0;font-size:13px;line-height:1.45;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 20px;margin:14px 0 0}
+.stat{border-top:1px solid var(--line);padding-top:14px;min-width:0}
+.stat .n{display:block;font-size:40px;line-height:1;color:var(--espresso)}
+.stat .l{display:block;margin-top:8px;font-size:14px;line-height:1.45;color:var(--muted)}
+.stat.aud .n{color:var(--sage-ink)}
+.stat.aud{border-top-color:rgba(95,169,130,.55)}
+.story{margin:22px 0 0;font-size:15px;line-height:1.7;color:var(--ink)}
+.story + .story{margin-top:8px}
+
+.bars{margin:34px 0 0;padding:22px 20px 18px;background:var(--paper);border:1px solid var(--line);border-radius:20px}
+.bars h3{margin:0 0 14px;font-size:15px;font-weight:500;line-height:1.4;color:var(--espresso)}
+.bar{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:12px;align-items:center;font-size:14.5px;line-height:1.3;margin:10px 0}
+.bar .t{color:var(--ink)}
+.bar .track{height:8px;border-radius:99px;background:#EFE7D8;overflow:hidden}
+.bar .fill{display:block;height:100%;border-radius:99px;background:var(--sage)}
+.bar .v{font-size:16px;color:var(--espresso);min-width:48px;text-align:end}
+.note{margin:12px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.note + .note{margin-top:4px}
+
+.facts{display:grid;grid-template-columns:1fr;gap:12px;margin:26px 0 0}
+.fact{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.fact > b{display:block;font-weight:500;font-size:16px;line-height:1.45;color:var(--espresso)}
+.fact > span{display:block;margin-top:4px;font-size:14.5px;line-height:1.55;color:var(--muted)}
+.fact > small{display:block;margin-top:6px;font-size:12.5px;line-height:1.45;color:var(--muted)}
+
+/* == 5. ההוכחה: אבי לוי (טקסט בלבד) == */
+.proof .wrap{max-width:760px}
+.proof-card{position:relative;background:var(--cream-deep);border-radius:12px;padding:48px 28px 46px;text-align:center}
+.proof-card::before,.proof-card::after{content:"";position:absolute;pointer-events:none}
+.proof-card::before{inset:9px;border:1px solid rgba(140,106,28,.22);border-radius:8px}
+.proof-card::after{inset:14px;border:1px solid rgba(196,151,47,.45);border-radius:5px}
+.proof-card > *{position:relative;z-index:1}
+.proof .pk{font-size:13px;font-weight:500;line-height:1.4;color:var(--muted)}
+.proof h2{margin-top:10px;font-size:26px}
+.proof .dates{margin-top:8px;font-size:14px;line-height:1.5;color:var(--muted)}
+.proof .pnum{margin-top:26px}
+.proof .pnum .n{display:block;font-size:56px;line-height:1;color:var(--espresso)}
+.proof .pnum .l{display:block;margin-top:10px;font-size:15px;line-height:1.5;color:var(--ink)}
+.proof .dates,.proof .pline,.proof .pend{text-wrap:balance}
+.proof .pline{margin:20px auto 0;max-width:44ch;font-size:16px;line-height:1.7;color:var(--ink)}
+.proof .pend{margin-top:14px;font-size:16px;font-weight:500;line-height:1.6;color:var(--espresso)}
+
+/* == 6. ההצעה == */
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:28px}
+.card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 20px 22px;
+transition:transform .2s ease,box-shadow .2s ease}
+.card .idx{display:inline-block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:400;font-size:22px;line-height:1;color:var(--gold-ink)}
+.card h3{margin-top:10px;font-size:18px;font-weight:500;line-height:1.35;color:var(--espresso)}
+.card p{margin-top:6px;font-size:15px;line-height:1.6;color:var(--muted)}
+.card .pilot{position:absolute;top:18px;inset-inline-end:18px;padding:2px 10px;border-radius:999px;background:#FBE2D5;
+box-shadow:inset 0 0 0 1px rgba(244,183,155,.9);font-size:12.5px;font-weight:500;line-height:1.6;color:var(--espresso)}
+.card .shot{margin-top:16px}
+.card .shotcap{margin-top:10px;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.card .shotcap b{font-weight:500;color:var(--espresso)}
+
+.ask{margin-top:28px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 20px}
+.ask h3{font-size:18px;font-weight:500;line-height:1.4;color:var(--espresso)}
+.ask li{position:relative;margin-top:10px;padding-inline-start:20px;font-size:16px;line-height:1.6;color:var(--ink)}
+.ask li::before{content:"";position:absolute;inset-inline-start:2px;top:.66em;width:7px;height:7px;border-radius:50%;background:var(--sage)}
+.ask > p{margin-top:10px;font-size:16px;line-height:1.6;color:var(--ink)}
+.ask > p b{font-weight:500;color:var(--espresso)}
+.clarify{margin-top:14px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:13px;line-height:1.55;color:var(--muted)}
+.clarify p + p{margin-top:4px}
+
+/* == 7. נשמח לדבר, ולהתנסות == */
+.talk{border-bottom:0}
+.talk .sub{margin-top:12px;font-size:16px;line-height:1.7;color:var(--ink);max-width:52ch}
+.contact{margin-top:28px;display:grid;gap:18px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 20px}
+.who b{display:block;font-weight:500;font-size:18px;line-height:1.35;color:var(--espresso)}
+.who span{display:block;font-size:14px;line-height:1.45;color:var(--muted)}
+.lines{display:grid;gap:6px;font-size:16px;line-height:1.5}
+.lines a{text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)}
+.lines li{display:flex}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 26px;border-radius:999px;
+background:var(--espresso);color:var(--cream);font-size:16px;font-weight:500;line-height:1.2;text-decoration:none;
+transition:transform .15s ease,box-shadow .15s ease}
+.btn.alt{background:transparent;color:var(--espresso);box-shadow:inset 0 0 0 1px rgba(44,38,32,.28)}
+.btn:active{transform:none}
+
+.try{margin-top:40px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;
+border-top:1px solid var(--line);padding-top:32px}
+.try .face{width:56px;height:56px;border-radius:50%;padding:2px;background:var(--paper);
+box-shadow:0 0 0 1px rgba(196,151,47,.55),0 6px 14px -8px rgba(44,38,32,.35)}
+.try .face img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.try .tk{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500;line-height:1.4;color:var(--gold-ink)}
+.try .tk img{flex:none;width:30px;height:30px;border-radius:8px}
+.try .tline{margin-top:6px;font-size:17px;line-height:1.5;color:var(--espresso);text-wrap:balance}
+/* שלושה כפתורים ברוחב אחיד: בטלפון בטור, מטאבלט בשורה */
+.stores{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.stores .btn{width:100%;padding:13px 18px}
+.last{padding:4px 24px 56px;text-align:center;font-size:16px;line-height:1.6;color:var(--espresso)}
+.last::before{content:"";display:block;width:40px;height:1px;margin:0 auto 18px;background:var(--gold);opacity:.7}
+
+/* == טאבלט == */
+@media (min-width:600px){
+.cover{padding:52px 40px 64px}
+.cover h1{font-size:40px;max-width:520px}
+.h1b{font-size:19px;max-width:none}
+.c-hero{max-width:500px;gap:36px;margin-top:32px}
+.hero .device{--w:236px}
+.live .big .n{font-size:64px}
+.live .small .n{font-size:34px}
+.live .l{font-size:14px}
+.lede{max-width:46ch;font-size:17px}
+.eddy .wrap{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:40px;align-items:center}
+.eddy .portrait{grid-column:2;grid-row:1}
+.eddy .txt{grid-column:1;grid-row:1}
+.eddy .eb{margin-top:0}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card.has-shot{grid-row:span 2}
+.cards.four .has-shot{grid-column:2;grid-row:1 / span 3}
+.facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.contact{grid-template-columns:minmax(0,1fr) auto;align-items:end}
+.contact .who{grid-column:1 / -1}
+.stores{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tour-detail{grid-template-columns:minmax(0,1fr) minmax(0,320px);align-items:center;column-gap:40px}
+}
+
+/* == מחשב == */
+@media (min-width:960px){
+.cover{padding:64px 48px;min-height:100vh;display:flex;align-items:center}
+.cover::before{inset:24px;border-radius:12px}
+.cover::after{inset:31px;border-radius:7px}
+.cover-in{width:100%;max-width:1080px;margin:0 auto}
+.cover-text{display:grid;grid-template-columns:minmax(0,1fr) 330px;column-gap:80px;text-align:start;align-items:start;justify-items:start;
+grid-template-areas:"sign hero" "eyebrow hero" "h1 hero" "h1b hero" "live hero" "lede hero";
+grid-template-rows:auto auto auto auto auto 1fr}
+.sign{grid-area:sign}
+.eyebrow{grid-area:eyebrow;justify-content:flex-start;margin-top:40px}
+.eyebrow::before{display:none}
+.eyebrow::after{width:64px}
+.cover h1{grid-area:h1;font-size:clamp(40px,4.3vw,54px);line-height:1.1;max-width:12em;margin-top:16px}
+.h1b{grid-area:h1b;font-size:21px;max-width:none;margin-top:14px}
+.lede{grid-area:lede;font-size:17px;max-width:46ch;margin-top:30px}
+.c-hero{display:contents}
+.hero{grid-area:hero;align-self:center;justify-self:center}
+.hero .device{--w:clamp(220px,calc((100vh - 170px) / 2.2),300px)}
+.live{grid-area:live;flex-direction:row;flex-wrap:wrap;align-items:flex-end;gap:24px 28px;margin-top:40px}
+.live .big .n{font-size:clamp(72px,7vw,92px)}
+.live .rule{width:56px}
+.live .l{font-size:14px}
+.live .small{margin-top:0;padding-top:0;border-top:0;width:auto;padding-inline-start:26px;border-inline-start:1px solid var(--line)}
+.live .small .n{font-size:38px}
+.sign .face{width:48px;height:48px}
+
+.eddy{padding:110px 48px}
+.eddy .wrap{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:72px;align-items:center}
+.eddy .portrait{grid-column:2;grid-row:1}
+.eddy .txt{grid-column:1;grid-row:1}
+.eddy .eb{margin-top:0}
+.eddy h2{font-size:46px}
+
+.section{padding:110px 48px}
+.section h2{font-size:40px}
+.intro{font-size:17px}
+
+.tour{overflow:visible;margin:44px 0 0;padding:0;justify-content:center;gap:clamp(40px,6vw,88px)}
+.tour figure{width:236px}
+.tour figure:nth-child(even){margin-top:56px}
+.tour .device{--w:236px}
+.tour-detail{grid-template-columns:auto 380px;justify-content:center;column-gap:64px;margin:96px auto 0}
+.td-text b{font-size:20px}
+.td-text span{font-size:16px}
+
+.aud-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:56px;align-items:start;
+grid-template-areas:"nums bars" "shot bars" "story bars";grid-template-rows:auto auto 1fr}
+.aud-nums{grid-area:nums}
+.aud-shot{grid-area:shot}
+.aud-story{grid-area:story}
+.aud-bars{grid-area:bars;align-self:center}
+.stats{gap:40px}
+.stat .n{font-size:64px}
+.stat .l{font-size:15.5px}
+.bar{grid-template-columns:110px minmax(0,1fr) auto}
+.facts{gap:16px}
+
+.proof-card{padding:64px 56px 60px}
+.proof h2{font-size:34px}
+.proof .pnum .n{font-size:72px}
+
+.cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.cards.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ask{padding:28px 32px}
+.ask ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}
+
+.talk .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px;align-items:start}
+.talk .head{grid-column:1}
+.contact{grid-column:2;margin-top:0}
+.try{grid-column:1 / -1;grid-template-columns:auto minmax(0,1fr) auto;margin-top:56px}
+.stores{grid-column:auto;grid-template-columns:repeat(3,minmax(156px,1fr))}
+}
+/* מחשב רחב: הקהל בשלושה טורים בגובה דומה */
+@media (min-width:1100px){
+.aud-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr) minmax(0,1.2fr);column-gap:44px;
+grid-template-areas:"nums shot bars" "story shot bars";grid-template-rows:auto 1fr}
+.aud-nums .stats{grid-template-columns:minmax(0,1fr);gap:24px}
+.aud-shot{align-self:center;max-width:none;margin-top:28px}
+.aud-bars .bars{margin-top:28px}
+}
+/* מחשב צר: 80K+ בשורה משלו, בלי קו לפני המספר הקטן הראשון */
+@media (min-width:960px) and (max-width:1199px){
+.live .big{flex-basis:100%}
+.live .big + .small{padding-inline-start:0;border-inline-start:0}
+.contact{grid-template-columns:minmax(0,1fr)}
+}
+@media (min-width:960px) and (hover:hover){
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -22px rgba(44,38,32,.35)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 22px -12px rgba(44,38,32,.55)}
+.btn:active{transform:none;box-shadow:none}
+}
+@media (prefers-reduced-motion:reduce){
+.js .ph img,.card,.btn{transition:none}
+.tour{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 1. השער ===== -->
+<header class="cover">
+  <div class="cover-in">
+    <div class="cover-text">
+      <div class="sign">
+        <span class="face"><img src="img/eddy-face.jpg" width="240" height="240" alt="אדי, השף הדיגיטלי"></span>
+        <span><b>חוברת המתכונים שלי</b><small>עם אדי, השף הדיגיטלי</small></span>
+      </div>
+
+      <p class="eyebrow">הזמנה לשיתוף פעולה</p>
+
+      <h1 data-for="general">אדי מארח.<br>אתם מוזמנים.</h1>
+      <h1 data-for="brand">אדי מארח.<br>המותג שלכם מוזמן.</h1>
+      <h1 data-for="dietitians">המתכונים שלך, במטבח של הלקוחות שלך.</h1>
+      <p class="h1b" data-for="dietitians">ואדי לידם, כשהם מחליטים מה לבשל.</p>
+
+      <div class="c-hero">
+        <div class="hero">
+          <div class="device">
+            <span class="island"></span>
+            <div class="screen ph"><img src="img/hero-s1.webp" width="640" height="1312" fetchpriority="high" alt="דף מתכון באפליקציה: סלט פלפלים, תגיות תזונה, זמן הכנה ורמת קושי"></div>
+          </div>
+        </div>
+        <div class="live">
+          <div class="big">
+            <span class="n num" data-count="80"><span class="cnt" dir="ltr" aria-hidden="true">80K+</span><span class="sr">יותר מ-80 אלף כניסות</span></span>
+            <span class="rule" aria-hidden="true"></span>
+            <span class="l"><b>כניסות</b>ביקורים באפליקציה ובאתר, מאז מרץ&nbsp;2026</span>
+          </div>
+          <div class="small"><span class="n num"><span dir="ltr">3,400+</span></span><span class="l">משתמשים רשומים</span></div>
+          <div class="small"><span class="n num"><span dir="ltr">15,000+</span></span><span class="l">מתכונים שמורים</span></div>
+        </div>
+      </div>
+
+      <p class="lede" data-for="general">אפליקציה ישראלית שבה שומרים מתכונים, בונים רשימת קניות ומחליטים מה לבשל. אדי, השף הדיגיטלי, הוא הפנים שלה. והוא כבר יודע לארח.</p>
+      <p class="lede" data-for="brand">אפליקציה ישראלית שבה שומרים מתכונים, בונים רשימת קניות ומחליטים מה לבשל. אדי, השף הדיגיטלי, הוא הפנים שלה. ומותג שנמצא כאן, נמצא ברגע ההחלטה.</p>
+      <p class="lede" data-for="dietitians">חוברת המתכונים שלי היא אפליקציה ישראלית לשמירת מתכונים, רשימות קניות ותכנון ארוחות. כל מתכון שנשמר מהפוסט שלך נשאר עם קישור חזרה אלייך.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== 2. אדי: הרצועה הכהה היחידה ===== -->
+<section class="eddy" aria-labelledby="eddy-h">
+  <div class="wrap">
+    <figure class="portrait ph"><img src="img/eddy-portrait.webp" width="800" height="1000" loading="lazy" decoding="async" alt="אדי, השף הדיגיטלי, במטבח עם פאי"></figure>
+    <div class="txt">
+      <p class="eb">המארח</p>
+      <h2 id="eddy-h">נעים להכיר: אדי <i lang="en" dir="ltr">Eddy</i></h2>
+      <p class="role">השף הדיגיטלי של החוברת</p>
+      <p>אנשים לא פותחים אפליקציית מתכונים כדי לגלול. פותחים כדי להחליט מה לבשל. ואדי הוא מי שמחכה שם, עם הצעה, תפריט ותשובה.</p>
+      <ul>
+        <li>מציע מה לבשל לפי השעה ביום</li>
+        <li>"יש לי את זה במקרר" <span class="arr">←</span> מה להכין</li>
+        <li>מתכנן תפריט לשבוע</li>
+        <li>מציע חלופה למצרך שנגמר</li>
+        <li>מתכנן אירוע שלם</li>
+      </ul>
+      <p class="closing">אצל אדי, שיתוף פעולה הוא אירוח, לא פרסומת. מגיעים עם מתכון טוב, והמתכון נשאר בחוברת.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. בתוך האפליקציה: מסכים אמיתיים ===== -->
+<section class="section tour-sec" aria-labelledby="tour-h">
+  <div class="wrap">
+    <p class="kicker">בתוך האפליקציה</p>
+    <h2 id="tour-h">כך זה נראה אצל המשתמשים</h2>
+    <div class="tour" tabindex="0" role="region" aria-label="צילומי מסך מהאפליקציה">
+      <figure>
+        <figcaption><b>אדי, השף הדיגיטלי</b><span>מציע מה לבשל לפי השעה ביום</span></figcaption>
+        <div class="device"><span class="island"></span><div class="screen ph"><img src="img/tour-eddy.webp" width="640" height="1312" loading="lazy" decoding="async" alt="המסך של אדי: מה לבשל הערב, מה יש במקרר, ומתכון מלינק"></div></div>
+      </figure>
+      <figure>
+        <figcaption><b>חלופה ליד כל מצרך</b><span>חסר מצרך? אדי מציע במה להחליף</span></figcaption>
+        <div class="device"><span class="island"></span><div class="screen ph"><img src="img/tour-subs.webp" width="640" height="1311" loading="lazy" decoding="async" alt="המצרכים של סלט פלפלים, עם כפתור חלופה ליד כל מצרך"></div></div>
+      </figure>
+      <figure>
+        <figcaption><b>תיוג תזונה אוטומטי</b><span>ערכים תזונתיים משוערים למנה</span></figcaption>
+        <div class="device"><span class="island"></span><div class="screen ph"><img src="img/tour-nutrition.webp" width="640" height="1312" loading="lazy" decoding="async" alt="ערכים תזונתיים למנה ותגיות דיאטה ותזונה של אותו מתכון"></div></div>
+      </figure>
+    </div>
+    <div class="tour-detail">
+      <p class="td-text"><b>רשימת קניות משותפת</b><span>מסתדרת לפי סדר המדפים ברשת שנבחרה</span></p>
+      <figure class="shot sq ph"><img src="img/tour-shopping.webp" width="800" height="800" loading="lazy" decoding="async" alt="רשימת קניות באפליקציה: מצרכים ממתכון, שיתוף, ובחירת רשת לסדר המדפים"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. הקהל ===== -->
+<section class="section" aria-labelledby="aud-h">
+  <div class="wrap">
+    <p class="kicker">הקהל</p>
+    <h2 id="aud-h">אנחנו יודעים מה הם מבשלים</h2>
+    <p class="intro">לא מסקר ולא מניחוש: מתוך המתכונים שהם שמרו בעצמם.</p>
+    <div class="aud-grid">
+      <div class="aud-nums">
+        <p class="asof">המספרים · נכון לאוקטובר 2026</p>
+        <div class="stats">
+          <div class="stat"><span class="n num"><span dir="ltr">796</span></span><span class="l">הרשמות בספטמבר, חודש השיא</span></div>
+          <div class="stat aud" data-for="dietitians"><span class="n num"><span dir="ltr">70%</span></span><span class="l">מהמתכונים מתויגים בתגית שאת עובדת איתה</span></div>
+          <div class="stat aud" data-for="brand"><span class="n num"><span dir="ltr">750+</span></span><span class="l">מתכונים מזכירים מותג מזון או מטבח בשמו</span></div>
+          <div class="stat aud" data-for="general"><span class="n num"><span dir="ltr">2,737</span></span><span class="l">מבקרים פתחו מתכון ששותף להם מהאפליקציה</span></div>
+        </div>
+      </div>
+      <figure class="shot aud-shot ph"><img src="img/diet-tags.webp" width="912" height="684" loading="lazy" decoding="async" alt="הפאנל דיאטה ותזונה באפליקציה, עם תגיות כמו צמחוני, טבעוני וללא גלוטן"></figure>
+      <div class="aud-story">
+        <p class="story">אפליקציה צעירה, באוויר מפברואר 2026, והיום גם <span class="nowrap">ב-<span dir="ltr">App Store</span></span> <span class="nowrap">וב-<span dir="ltr">Google Play</span>.</span></p>
+        <p class="story" data-for="brand">יותר משליש מהמתכונים הם מאפים וקינוחים.</p>
+      </div>
+      <div class="aud-bars">
+        <div class="bars" data-for="dietitians">
+          <h3>כמה מתכונים מתויגים בכל תגית</h3>
+          <div class="bar"><span class="t">חלבון גבוה</span><span class="track" aria-hidden="true"><i class="fill" style="width:100%"></i></span><span class="v num"><span dir="ltr">7,223</span></span></div>
+          <div class="bar"><span class="t">ללא גלוטן</span><span class="track" aria-hidden="true"><i class="fill" style="width:64.1%"></i></span><span class="v num"><span dir="ltr">4,633</span></span></div>
+          <div class="bar"><span class="t">דל פחמימה</span><span class="track" aria-hidden="true"><i class="fill" style="width:55.7%"></i></span><span class="v num"><span dir="ltr">4,025</span></span></div>
+          <div class="bar"><span class="t">טבעוני</span><span class="track" aria-hidden="true"><i class="fill" style="width:39%"></i></span><span class="v num"><span dir="ltr">2,818</span></span></div>
+          <div class="bar"><span class="t">ללא סוכר</span><span class="track" aria-hidden="true"><i class="fill" style="width:38.3%"></i></span><span class="v num"><span dir="ltr">2,768</span></span></div>
+          <div class="bar"><span class="t">קטו</span><span class="track" aria-hidden="true"><i class="fill" style="width:15.8%"></i></span><span class="v num"><span dir="ltr">1,144</span></span></div>
+          <p class="note">ה-<span dir="ltr">70%</span> הם המתכונים שמתויגים לפחות באחת מהתגיות האלה.</p>
+          <p class="note">תיוג אוטומטי שהמשתמשים יכולים לתקן. הערכה, לא אישור.</p>
+        </div>
+        <div class="bars" data-for="brand general">
+          <h3>כמה מתכונים מתויגים בכל תגית</h3>
+          <div class="bar"><span class="t">צמחוני</span><span class="track" aria-hidden="true"><i class="fill" style="width:100%"></i></span><span class="v num"><span dir="ltr">10,012</span></span></div>
+          <div class="bar"><span class="t">ללא חלב</span><span class="track" aria-hidden="true"><i class="fill" style="width:93.7%"></i></span><span class="v num"><span dir="ltr">9,383</span></span></div>
+          <div class="bar"><span class="t">חלבון גבוה</span><span class="track" aria-hidden="true"><i class="fill" style="width:72.1%"></i></span><span class="v num"><span dir="ltr">7,223</span></span></div>
+          <div class="bar"><span class="t">כשר פרווה</span><span class="track" aria-hidden="true"><i class="fill" style="width:60.3%"></i></span><span class="v num"><span dir="ltr">6,042</span></span></div>
+          <div class="bar"><span class="t">ללא גלוטן</span><span class="track" aria-hidden="true"><i class="fill" style="width:46.3%"></i></span><span class="v num"><span dir="ltr">4,633</span></span></div>
+          <div class="bar"><span class="t">טבעוני</span><span class="track" aria-hidden="true"><i class="fill" style="width:28.1%"></i></span><span class="v num"><span dir="ltr">2,818</span></span></div>
+          <p class="note">תיוג אוטומטי שהמשתמשים יכולים לתקן. הערכה, לא אישור.</p>
+        </div>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>סוף השבוע הוא זמן המטבח.</b><span>יום שישי מוביל בסימוני "בישלתי", ובשלושת החודשים האחרונים יותר מחצי מהשמירות קרו בין חמישי לשבת.</span></div>
+      <div class="fact"><b>מהרשת לחוברת.</b><span>כמעט חצי מהמתכונים נשמרו מהרשתות, ורובם מאינסטגרם.</span></div>
+      <div class="fact"><b>מהמתכון לסל.</b><span><span dir="ltr">490</span> רשימות קניות, ו-<span dir="ltr">128</span> מהן נבנו ישר ממתכון.</span></div>
+      <div class="fact"><b>מי שמבשל, נשאר.</b><span><span dir="ltr">62%</span> מהמבשלים עדיין נכנסים לאפליקציה, מול <span dir="ltr">12%</span> ממי שלא בישל.</span><small>מבין מי שהצטרף לפני יותר מחודשיים</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. הוכחה, לא הבטחה: אבי לוי (טקסט בלבד, הכרעת רון) ===== -->
+<section class="section proof" aria-labelledby="proof-h">
+  <div class="wrap">
+    <div class="proof-card">
+      <p class="pk">הוכחה, לא הבטחה</p>
+      <h2 id="proof-h">השותף הראשון שלנו: השף&nbsp;אבי&nbsp;לוי</h2>
+      <p class="dates">שיתוף פעולה מוצלח של שלושה חודשים, יולי עד ספטמבר 2026.</p>
+      <p class="pnum"><span class="n num"><span dir="ltr">11K+</span></span><span class="l">מבקרים נכנסו לאפליקציה ישר לאזור שלו</span></p>
+      <p class="pline">ספטמבר, החודש האחרון של שיתוף הפעולה, היה חודש השיא שלנו בהרשמות.</p>
+      <p class="pend">עכשיו אנחנו מחפשים את שיתוף הפעולה הבא.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. ההצעה ===== -->
+<section class="section offer" aria-labelledby="offer-h">
+  <div class="wrap">
+    <p class="kicker">ההצעה</p>
+    <h2 id="offer-h"><span data-for="dietitians">מה תקבלי</span><span data-for="brand general">מה תקבלו</span></h2>
+    <p class="intro" data-for="brand">מותגים כבר בפנים, בלי ששילמו. בואו נהפוך נוכחות מקרית לנוכחות שלכם.</p>
+
+    <div class="cards" data-for="dietitians">
+      <article class="card"><span class="idx">01</span><h3>מהפוסט שלך לחוברת שלהם.</h3><p><span dir="ltr">4,832</span> מתכונים כבר נשמרו אצלנו מאינסטגרם, וכל אחד מהם נשאר עם קישור למקור.</p></article>
+      <article class="card has-shot"><span class="idx">02</span><h3>כלים ללקוחות שלך, בחינם.</h3><p>ערכים תזונתיים משוערים למנה, תיוג תזונה וסינון לפיו, רשימת קניות ישר מהמתכון, ואדי, שמתחשב בהעדפות התזונה שהם הזינו לו.</p>
+        <figure class="shot ph"><img src="img/nutrition-card.webp" width="900" height="675" loading="lazy" decoding="async" alt="כרטיס הערכים התזונתיים באפליקציה: קלוריות, חלבון, פחמימות, שומן, סיבים וסוכר"></figure>
+        <p class="shotcap">בתחתית הכרטיס, האפליקציה עצמה כותבת: <b>"לייעוץ תזונתי מקצועי פנה לדיאטן/ית"</b></p></article>
+      <article class="card"><span class="idx">03</span><h3>מתכון שלך בין מתכוני הפתיחה.</h3><p>כל משתמש חדש בוחר מתכוני פתיחה לחוברת שלו. מתכון שלך יכול להיות שם, עם השם שלך.</p></article>
+      <article class="card"><span class="idx">04</span><span class="pilot">נבנה בפיילוט</span><h3>קהילה פרטית שלך באפליקציה.</h3><p>קישור הצטרפות, פיד מתכונים משותף, ודף ניהול בשבילך.</p></article>
+      <article class="card"><span class="idx">05</span><span class="pilot">נבנה בפיילוט</span><h3>אזור משלך באפליקציה.</h3><p>עם קישור כניסה ציבורי, כמו שהיה לשף אבי לוי.</p></article>
+    </div>
+
+    <div class="cards" data-for="brand">
+      <article class="card has-shot"><span class="idx">01</span><h3>מתכון פתיחה ממותג.</h3><p>כל משתמש חדש בוחר מתכוני פתיחה לחוברת שלו, לפי הסגנון שבחר. המתכון שלכם יכול להיות אחד מהם.</p>
+        <figure class="shot ph"><img src="img/substitutes-rows.webp" width="900" height="675" loading="lazy" decoding="async" alt="המצרכים של מתכון באפליקציה, עם כפתור חלופה ליד כל מצרך"></figure>
+        <p class="shotcap">ליד כל מצרך במתכון: חלופה בלחיצה</p></article>
+      <article class="card"><span class="idx">02</span><h3>הטבה במועדון "החברים של אדי".</h3><p>המועדון נפתח למי ששמר 10 מתכונים ומעלה, כלומר למי שכבר בנה חוברת אמיתית. אתם מנפיקים קוד קופון וסופרים את המימושים אצלכם.</p></article>
+      <article class="card"><span class="idx">03</span><h3>מתכון שיוצא החוצה.</h3><p>לכל מתכון יש דף שיתוף ציבורי, ו-<span dir="ltr">2,737</span> מבקרים כבר פתחו מתכון ששותף להם. המתכון שלכם יוצא לערוצים שלכם, והקהל שלכם פוגש את החוברת.</p></article>
+      <article class="card"><span class="idx">04</span><h3>דוח מטבח.</h3><p>כמה מתכונים אצלנו כבר מזכירים את המוצר או את הקטגוריה שלכם, מה מבשלים בעונה, ואיזה פילוח תזונתי. נתונים מצטברים בלבד, בלי מידע אישי.</p></article>
+      <article class="card"><span class="idx">05</span><span class="pilot">נבנה בפיילוט</span><h3>אזור משלכם באפליקציה.</h3><p>עם קישור שאתם מפיצים לקהל שלכם, ומדידה של מי הגיע. זה הפורמט של שיתוף הפעולה עם אבי לוי.</p></article>
+    </div>
+
+    <div class="cards four" data-for="general">
+      <article class="card"><span class="idx">01</span><h3>המתכונים שלכם, עם קישור חזרה אליכם.</h3><p>מתכון שנשמר מהפוסט או מהאתר שלכם נשאר עם קישור למקור.</p></article>
+      <article class="card has-shot"><span class="idx">02</span><h3>מתכון שלכם בין מתכוני הפתיחה,</h3><p>שכל משתמש חדש בוחר מהם לחוברת שלו.</p>
+        <figure class="shot ph"><img src="img/substitutes-rows.webp" width="900" height="675" loading="lazy" decoding="async" alt="המצרכים של מתכון באפליקציה, עם כפתור חלופה ליד כל מצרך"></figure>
+        <p class="shotcap">ליד כל מצרך במתכון: חלופה בלחיצה</p></article>
+      <article class="card"><span class="idx">03</span><h3>דף שיתוף לכל מתכון.</h3><p>המתכון יוצא לערוצים שלכם, והקהל שלכם פוגש את החוברת.</p></article>
+      <article class="card"><span class="idx">04</span><span class="pilot">נבנה בפיילוט</span><h3>אזור משלכם,</h3><p>עם קישור כניסה שנמדד, כמו שהיה לשף אבי לוי.</p></article>
+    </div>
+
+    <div class="ask" data-for="dietitians">
+      <h3>מה נבקש</h3>
+      <ul>
+        <li>להזמין את הלקוחות והעוקבים שלך, דרך קישור אחד שנמדד.</li>
+        <li>4 עד 8 מתכונים בחודש, מתוך מה שאת כבר מפרסמת. הקרדיט והקישור אלייך נשמרים.</li>
+        <li>אזכור אחד בחודש בערוצים שלך, סטורי או פוסט.</li>
+        <li>תעודת דיאטנית בתוקף, כדי שנוכל להציג אותך בתואר.</li>
+      </ul>
+    </div>
+    <div class="ask" data-for="brand">
+      <h3>מה נבקש: פיילוט.</h3>
+      <p>פורמט אחד, 90 יום, ודוח פעם בחודש.</p>
+      <p><b>מה נמדד:</b> כניסות דרך הקישור שלכם, שמירות של המתכונים שלכם, ומימושי הקופון שאתם סופרים אצלכם.</p>
+    </div>
+    <div class="ask" data-for="general">
+      <h3>מה נבקש</h3>
+      <ul>
+        <li>מתכונים, מתוך מה שאתם כבר מפרסמים.</li>
+        <li>קישור אחד לקהל שלכם, שנמדד.</li>
+        <li>אזכור בערוצים שלכם.</li>
+      </ul>
+    </div>
+
+    <div class="clarify" data-for="dietitians">
+      <p>התגיות והערכים התזונתיים הם הערכה אוטומטית, והמשתמשים יכולים לתקן אותם.</p>
+      <p>אנחנו לא נותנים ייעוץ רפואי, ולא מציגים מזון כמרפא או כמונע מחלה.</p>
+      <p>שותפים מקבלים מאיתנו רק מספרים מצטברים, בלי מידע אישי על משתמשים.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. נשמח לדבר, ולהתנסות ===== -->
+<section class="section talk" aria-labelledby="talk-h">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">נשמח לדבר</p>
+      <h2 id="talk-h"><span data-for="dietitians">בואי נבנה את הקהילה שלך אצל אדי.</span><span data-for="brand">בואו נבנה פיילוט של 90 יום.</span><span data-for="general">בואו נבנה יחד פיילוט.</span></h2>
+      <p class="sub" data-for="dietitians">שיחה אחת עם רון, ומתחילים פיילוט משותף. כל הצטרפות דרך הקישור שלך נספרת.</p>
+      <p class="sub" data-for="brand" data-until="2026-12-05">חנוכה מתחילה ב-4 בדצמבר בערב. פיילוט שמתחיל עכשיו מגיע אליה מוכן.</p>
+    </div>
+    <div class="contact">
+      <div class="who"><b>רון אלון</b><span>מייסד, חוברת המתכונים שלי</span></div>
+      <ul class="lines">
+        <li><a href="tel:+972549909590" dir="ltr">054-9909590</a></li>
+        <li><a href="mailto:myrecipebookapp1@gmail.com" dir="ltr">myrecipebookapp1@gmail.com</a></li>
+        <li><a href="https://myrecipebook.co.il" dir="ltr">myrecipebook.co.il</a></li>
+      </ul>
+      <div class="btns"><a class="btn" href="https://wa.me/972549909590">וואטסאפ לרון</a></div>
+    </div>
+    <div class="try">
+      <span class="face ph"><img src="img/eddy-face.jpg" width="240" height="240" loading="lazy" decoding="async" alt="אדי"></span>
+      <div>
+        <p class="tk"><img src="img/icon-180.png" width="180" height="180" loading="lazy" decoding="async" alt="האייקון של חוברת המתכונים שלי"><span>להתנסות</span></p>
+        <p class="tline">הכי טוב לפגוש את אדי באפליקציה עצמה.</p>
+      </div>
+      <div class="stores">
+        <a class="btn alt" href="https://apps.apple.com/il/app/id6805153386" dir="ltr">App Store</a>
+        <a class="btn alt" href="https://play.google.com/store/apps/details?id=il.co.myrecipebook" dir="ltr">Google Play</a>
+        <a class="btn alt" href="https://myrecipebook.co.il" dir="ltr">myrecipebook.co.il</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="last">נבנה יחד משהו טעים.</footer>
+
+<script>
+(function(){
+  try{
+    /* תמונות: הופעה רכה; בשגיאה נשאר המסך הקרם */
+    var imgs=document.querySelectorAll('.ph img');
+    for(var i=0;i<imgs.length;i++){(function(im){
+      function ok(){im.classList.add('ok')}
+      function bad(){im.classList.add('bad')}
+      if(im.complete){ if(im.naturalWidth){ok()}else{bad()} }
+      else{ im.addEventListener('load',ok); im.addEventListener('error',bad); }
+    })(imgs[i]);}
+
+    /* שורה עונתית: יורדת לבד אחרי התאריך שלה */
+    var now=Date.now(),until=document.querySelectorAll('[data-until]');
+    for(var j=0;j<until.length;j++){ if(now>=Date.parse(until[j].getAttribute('data-until'))){until[j].hidden=true} }
+
+    /* המספר החי: 0 עד 80 בשנייה, פעם אחת, רק כשתנועה רצויה */
+    var el=document.querySelector('[data-count]');
+    if(el && 'IntersectionObserver' in window && window.matchMedia && matchMedia('(prefers-reduced-motion: no-preference)').matches){
+      var t=el.querySelector('.cnt'),end=+el.getAttribute('data-count'),fin=t.textContent;
+      t.style.minWidth=Math.ceil(t.getBoundingClientRect().width)+'px';
+      t.classList.add('counting'); t.textContent='0K+';
+      var io=new IntersectionObserver(function(es){
+        if(!es[0].isIntersecting){return}
+        io.disconnect();
+        var t0=null;
+        function step(ts){
+          if(t0===null){t0=ts}
+          var p=Math.min(1,(ts-t0)/1000),e=1-Math.pow(1-p,3);
+          t.textContent=Math.round(end*e)+'K+';
+          if(p<1){requestAnimationFrame(step)}else{t.textContent=fin;t.classList.remove('counting');t.style.minWidth=''}
+        }
+        requestAnimationFrame(step);
+      },{threshold:.5});
+      io.observe(el);
+    }
+  }catch(e){document.documentElement.classList.remove('js')}
+})();
+</script>
+</body>
+</html>
